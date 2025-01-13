@@ -1,21 +1,28 @@
 import { Amplify } from 'aws-amplify';
-import { generateClient } from 'aws-amplify/data';
+import outputs from '../amplify_outputs.json';
 import { initialAnimals } from './store/initialAnimals';
-import type { Schema } from './amplify/data/resource';
-import outputs from './amplify_outputs.json';
 
 Amplify.configure(outputs);
 
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
+
 const client = generateClient<Schema>();
 
+// Now you should be able to make CRUD operations with the
+// Data client
+// const fetchAnimals = async () => {
+//     const { data: todos, errors } = await client.models.InitialAnimal.list();
+// };
+
 async function uploadInitialAnimals() {
-  for (const animal of initialAnimals) {
-    await client.models.InitialAnimal.create({
-      ...animal,
-      worldId: 'default'
-    });
-  }
-  console.log('Initial animals uploaded successfully.');
+    for (const animal of initialAnimals) {
+        await client.models.InitialAnimal.create({
+            ...animal,
+            worldId: 'default'
+        });
+    }
+    console.log('Initial animals uploaded successfully.');
 }
 
 uploadInitialAnimals().catch(console.error);
