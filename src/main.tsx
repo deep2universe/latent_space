@@ -5,7 +5,13 @@ import './index.css'
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 
-Amplify.configure(outputs);
+// Enable debug logging for API calls
+Amplify.configure({
+  ...outputs,
+  Logging: {
+    level: 'DEBUG'
+  }
+});
 
 /**
  * Initialize the React application by rendering the root component

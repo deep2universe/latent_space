@@ -35,14 +35,35 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
   ];
 
   const uploadInitialAnimals = async () => {
-    for (const animal of initialAnimals) {
-      console.log(animal);
-
-      await client.models.InitialAnimal.create({
-        ...animal
-      });
+    try {
+      for (const animal of initialAnimals) {
+        try {
+          // Convert and validate data according to schema
+          const animalData = {
+            itemid: String(animal.itemid),
+            worldId: animal.worldId,
+            name: animal.name,
+            type: animal.type,
+            image: animal.image,
+            game: animal.game,
+            happiness: animal.happiness,
+            energy: animal.energy,
+            unlocked: animal.unlocked,
+            cost: animal.cost,
+            characteristics: animal.characteristics,
+            facts: animal.facts
+          };
+          console.log(animalData);
+          await client.models.InitialAnimal.create(animalData);
+          console.log(`Successfully uploaded animal: ${animal.name}`);
+        } catch (animalError) {
+          console.error(`Failed to upload animal ${animal.name}:`, animalError);
+        }
+      }
+      console.log('Initial animals upload completed');
+    } catch (error) {
+      console.error('Error during animal upload:', error);
     }
-    console.log('Initial animals uploaded successfully.');
   };
 
   return (
