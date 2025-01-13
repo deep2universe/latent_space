@@ -1,10 +1,9 @@
 import { Amplify } from 'aws-amplify';
 import outputs from '../amplify_outputs.json';
 import { initialAnimals } from './store/initialAnimals';
+import { generateClient } from 'aws-amplify/data';
 
 Amplify.configure(outputs);
-
-import { generateClient } from 'aws-amplify/data';
 import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>();
