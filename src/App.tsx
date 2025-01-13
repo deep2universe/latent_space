@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GameOverlay } from './components/GameOverlay';
 import { AnimalPanel } from './components/AnimalPanel';
 import { HUD } from './components/HUD';
 import { Shop } from './components/Shop';
 import { ZooWorld } from './components/ZooWorld';
 import { useGameStore } from './store/gameStore';
+import { uploadInitialAnimals } from './initializeData';
 
 const GAME_DURATION = 30 * 60;
 
@@ -61,6 +62,12 @@ function App() {
           <h1 className="text-3xl font-bold text-purple-600">
             Mein magischer Zoo
           </h1>
+          <button 
+            onClick={uploadInitialAnimals}
+            className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition-colors"
+          >
+            Initialize Database
+          </button>
         </div>
       </header>
 

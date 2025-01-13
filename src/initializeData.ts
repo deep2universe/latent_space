@@ -15,7 +15,7 @@ const client = generateClient<Schema>();
 //     const { data: todos, errors } = await client.models.InitialAnimal.list();
 // };
 
-async function uploadInitialAnimals() {
+export async function uploadInitialAnimals() {
     for (const animal of initialAnimals) {
         await client.models.InitialAnimal.create({
             ...animal,
