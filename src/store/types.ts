@@ -16,6 +16,8 @@ export interface Animal {
 
 export interface GameState {
   animals: Animal[];
+  initialized: boolean;
+  initialize: () => Promise<void>;
   stars: number;
   language: 'de' | 'en' | 'es' | 'fr' | 'ja';
   addStars: (amount: number) => void;

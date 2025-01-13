@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { GameState } from './types';
-import { initialAnimals } from './initialAnimals';
+import { fetchDefaultAnimals } from '../services/dataService';
 
 /**
  * Zustand store for managing game state
@@ -9,7 +9,13 @@ import { initialAnimals } from './initialAnimals';
 export const useGameStore = create<GameState>()(
   persist(
     (set) => ({
-      animals: initialAnimals,
+      animals: [],
+      initialized: false,
+
+      initialize: async () => {
+        const animals = await fetchDefaultAnimals();
+        set({ animals, initialized: true });
+      },
       stars: 10,
       language: 'de',
 
@@ -18,7 +24,7 @@ export const useGameStore = create<GameState>()(
       updateAnimalStats: (id, newStats) => 
         set((state) => ({
           animals: state.animals.map((animal) =>
-            animal.id === id
+            animal.itemid === id
               ? { ...animal, ...newStats }
               : animal
           )
@@ -31,7 +37,7 @@ export const useGameStore = create<GameState>()(
 
       unlockAnimal: (id) => 
         set((state) => {
-          const animal = state.animals.find(a => a.id === id);
+          const animal = state.animals.find(a => a.itemid === id);
           if (!animal || animal.unlocked || state.stars < animal.cost) {
             return state;
           }
@@ -39,7 +45,7 @@ export const useGameStore = create<GameState>()(
           return {
             stars: state.stars - animal.cost,
             animals: state.animals.map(a => 
-              a.id === id 
+              a.itemid === id 
                 ? { ...a, unlocked: true }
                 : a
             )

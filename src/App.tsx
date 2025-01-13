@@ -5,6 +5,7 @@ import { HUD } from './components/HUD';
 import { Shop } from './components/Shop';
 import { ZooWorld } from './components/ZooWorld';
 import { useGameStore } from './store/gameStore';
+import { useEffect } from 'react';
 import { uploadInitialAnimals } from './initializeData';
 
 const GAME_DURATION = 30 * 60;
@@ -16,7 +17,13 @@ function App() {
   const [currentAnimalId, setCurrentAnimalId] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [viewMode, setViewMode] = useState<'cards' | 'world'>('world');
-  const { animals, decreaseStats, updateAnimalStats, addStars } = useGameStore();
+  const { animals, decreaseStats, updateAnimalStats, addStars, initialized, initialize } = useGameStore();
+
+  useEffect(() => {
+    if (!initialized) {
+      initialize();
+    }
+  }, [initialized, initialize]);
 
   /**
    * Effect to handle the game timer
