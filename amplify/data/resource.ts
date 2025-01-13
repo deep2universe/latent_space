@@ -2,7 +2,7 @@ import { a, defineData, type ClientSchema } from '@aws-amplify/backend';
 
 const schema = a.schema({
   InitialAnimal: a.model({
-    id: a.string(),
+    itemid: a.string(),
     worldId: a.string(),
     name: a.string(),
     type: a.string(),

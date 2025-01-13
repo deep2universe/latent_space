@@ -273,13 +273,13 @@ export const ZooWorld: React.FC<ZooWorldProps> = ({ onPlayGame }) => {
 
           return (
             <Group
-              key={animal.id}
+              key={animal.itemid}
               x={position.x}
               y={position.y}
               width={ANIMAL_SIZE}
               height={ANIMAL_SIZE}
-              onClick={() => handleAnimalClick(animal.id, animal.game)}
-              onMouseEnter={() => setHoveredAnimal(animal.id)}
+              onClick={() => handleAnimalClick(animal.itemid, animal.game)}
+              onMouseEnter={() => setHoveredAnimal(animal.itemid)}
               onMouseLeave={() => setHoveredAnimal(null)}
               cursor="pointer"
             >
@@ -301,7 +301,7 @@ export const ZooWorld: React.FC<ZooWorldProps> = ({ onPlayGame }) => {
               shadowOpacity={0.2}
             />
             <Text
-              text={animals.find(a => a.id === hoveredAnimal)?.name || ''}
+              text={animals.find(a => a.itemid === hoveredAnimal)?.name || ''}
               fontSize={16}
               fontFamily="Arial"
               fill="#333"

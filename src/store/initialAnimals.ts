@@ -2,7 +2,7 @@ import { Animal } from './types';
 
 export const initialAnimals: Animal[] = [
   {
-    id: 1,
+    itemid: 1,
     name: 'Leo',
     type: 'Lion',
     image: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=800&auto=format&fit=crop',
@@ -26,7 +26,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 2,
+    itemid: 2,
     name: 'Ella',
     type: 'Elephant',
     image: 'https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800&auto=format&fit=crop',
@@ -49,7 +49,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 3,
+    itemid: 3,
     name: 'Raja',
     type: 'Tiger',
     image: 'https://images.unsplash.com/photo-1549480017-d76466a4b7e8?w=800&auto=format&fit=crop',
@@ -72,7 +72,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 4,
+    itemid: 4,
     name: 'Koko',
     type: 'Gorilla',
     image: 'https://files.worldwildlife.org/wwfcmsprod/images/Mountain_Gorilla_Silverback_WW22557/hero_full/cg47pknak_Mountain_Gorilla_Silverback_WW22557.jpg',
@@ -95,7 +95,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 5,
+    itemid: 5,
     name: 'Hoppi',
     type: 'Kangaroo',
     image: 'https://images.unsplash.com/photo-1579168765467-3b235f938439?w=800&auto=format&fit=crop',
@@ -118,7 +118,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 6,
+    itemid: 6,
     name: 'Charlie',
     type: 'Penguin',
     image: 'https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=800&auto=format&fit=crop',
@@ -141,7 +141,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 7,
+    itemid: 7,
     name: 'Polly',
     type: 'Parrot',
     image: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=800&auto=format&fit=crop',
@@ -164,7 +164,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 8,
+    itemid: 8,
     name: 'Hüpfi',
     type: 'Frog',
     image: 'https://cdn.pixabay.com/photo/2014/10/05/11/26/tree-frog-474949_1280.jpg',
@@ -187,7 +187,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 9,
+    itemid: 9,
     name: 'Slinky',
     type: 'Snake',
     image: 'https://images.unsplash.com/photo-1531386151447-fd76ad50012f?w=800&auto=format&fit=crop',
@@ -210,7 +210,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 10,
+    itemid: 10,
     name: 'Bamboo',
     type: 'Panda',
     image: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&auto=format&fit=crop',
@@ -233,7 +233,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 11,
+    itemid: 11,
     name: 'Karl',
     type: 'Koala',
     image: 'https://images.unsplash.com/photo-1579168765467-3b235f938439?w=800&auto=format&fit=crop',
@@ -256,7 +256,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 12,
+    itemid: 12,
     name: 'Lemi',
     type: 'Lemur',
     image: 'https://images.unsplash.com/photo-1582462232426-9b262ba04d81?w=800&auto=format&fit=crop',
@@ -279,7 +279,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 13,
+    itemid: 13,
     name: 'Wiggy',
     type: 'Worm',
     image: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=800&auto=format&fit=crop',
@@ -302,7 +302,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 14,
+    itemid: 14,
     name: 'Woody',
     type: 'Woodpecker',
     image: 'https://images.unsplash.com/photo-1592170577795-907fad001a7c?w=800&auto=format&fit=crop',
@@ -325,7 +325,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 15,
+    itemid: 15,
     name: 'Mazy',
     type: 'Mouse',
     image: 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=800&auto=format&fit=crop',
@@ -348,7 +348,7 @@ export const initialAnimals: Animal[] = [
     worldId: 'default'
   },
   {
-    id: 16,
+    itemid: 16,
     name: 'Lexi',
     type: 'Lynx',
     image: 'https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&auto=format&fit=crop',

@@ -1,5 +1,5 @@
 export interface Animal {
-  id: number;
+  itemid: number;
   name: string;
   type: string;
   image: string;
