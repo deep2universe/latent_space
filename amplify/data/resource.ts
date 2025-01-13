@@ -8,12 +8,12 @@ const schema = a.schema({
     type: a.string(),
     image: a.string(),
     game: a.string(),
-    happiness: a.number(),
-    energy: a.number(),
+    happiness: a.integer(),
+    energy: a.integer(),
     unlocked: a.boolean(),
-    cost: a.number(),
-    characteristics: a.list(a.string()),
-    facts: a.list(a.string())
+    cost: a.integer(),
+    characteristics: a.string().array(),
+    facts: a.string().array()
   }).authorization(allow => [allow.publicApiKey()])
 });
 
