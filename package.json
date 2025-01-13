@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node src/initializeData.ts",
+    "build": "vite build && tsc && node dist/initializeData.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
