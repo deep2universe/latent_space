@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^6.5.5",
-    "aws-amplify": "^6.6.6",
     "@pixi/filter-glow": "^5.2.1",
     "@pixi/react": "^7.1.1",
+    "aws-amplify": "^6.12.0",
     "konva": "^9.3.0",
     "lucide-react": "^0.344.0",
     "matter-js": "^0.19.0",
