@@ -8,17 +8,6 @@ import type { Schema } from '../../amplify/data/resource'; // Path to your backe
 
 const client = generateClient<Schema>();
 
-export async function uploadInitialAnimals() {
-    for (const animal of initialAnimals) {
-        console.log(animal);
-
-        await client.models.InitialAnimal.create({
-            ...animal
-        });
-    }
-    console.log('Initial animals uploaded successfully.');
-}
-
 interface HUDProps {
   timeLeft: number;
   onShopClick: () => void;
@@ -44,6 +33,17 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
     { code: 'fr', name: 'Français' },
     { code: 'ja', name: '日本語' }
   ];
+
+  const uploadInitialAnimals = async () => {
+    for (const animal of initialAnimals) {
+      console.log(animal);
+
+      await client.models.InitialAnimal.create({
+        ...animal
+      });
+    }
+    console.log('Initial animals uploaded successfully.');
+  };
 
   return (
     <div className="flex items-center gap-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-lg">
