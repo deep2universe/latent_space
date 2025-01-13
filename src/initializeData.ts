@@ -2,9 +2,9 @@ import { Amplify } from 'aws-amplify';
 import outputs from '../amplify_outputs.json';
 import { initialAnimals } from './store/initialAnimals';
 import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 Amplify.configure(outputs);
-import type { Schema } from '../amplify/data/resource'; // Path to your backend resource definition
 
 const client = generateClient<Schema>();
 
@@ -16,9 +16,10 @@ const client = generateClient<Schema>();
 
 export async function uploadInitialAnimals() {
     for (const animal of initialAnimals) {
+        console.log(animal);
+
         await client.models.InitialAnimal.create({
-            ...animal,
-            worldId: 'default'
+            ...animal
         });
     }
     console.log('Initial animals uploaded successfully.');
