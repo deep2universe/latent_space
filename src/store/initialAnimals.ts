@@ -22,7 +22,8 @@ export const initialAnimals: Animal[] = [
       'Can jump up to 8 meters',
       'Has the loudest roar of all cats',
       'Sleeps up to 20 hours a day'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 2,
@@ -44,7 +45,8 @@ export const initialAnimals: Animal[] = [
       'Can use tools with her trunk',
       'Loves to bathe and splash',
       'Communicates over long distances'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 3,
@@ -66,7 +68,8 @@ export const initialAnimals: Animal[] = [
       'Can swim very well',
       'Has perfect night vision',
       'Every tiger has a unique stripe pattern'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 4,
@@ -88,7 +91,8 @@ export const initialAnimals: Animal[] = [
       'Can learn sign language',
       'Is a herbivore',
       'Lives in family groups'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 5,
@@ -110,7 +114,8 @@ export const initialAnimals: Animal[] = [
       'Cannot hop backwards',
       'Has a pouch for the baby',
       'Lives in Australia'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 6,
@@ -132,7 +137,8 @@ export const initialAnimals: Animal[] = [
       'Can dive up to 100 meters deep',
       'Stays loyal to its partner',
       'Lives in large colonies'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 7,
@@ -154,7 +160,8 @@ export const initialAnimals: Animal[] = [
       'Enjoys learning new numbers',
       'Can count to 100',
       'Is a math genius'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 8,
@@ -176,7 +183,8 @@ export const initialAnimals: Animal[] = [
       'Can jump 30 times its body weight',
       'Has a sticky tongue for catching insects',
       'Is an excellent swimmer'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 9,
@@ -198,7 +206,8 @@ export const initialAnimals: Animal[] = [
       'Can move perfectly through tight spaces',
       'Has an excellent sense of direction',
       'Is a patient hunter'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 10,
@@ -220,7 +229,8 @@ export const initialAnimals: Animal[] = [
       'Can be very agile despite its size',
       'Has amazing ball control',
       'Trains its shooting technique daily'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 11,
@@ -242,7 +252,8 @@ export const initialAnimals: Animal[] = [
       'Can look at art for hours',
       'Loves to make others laugh',
       'Has an eye for details'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 12,
@@ -264,7 +275,8 @@ export const initialAnimals: Animal[] = [
       'Can draw lines perfectly',
       'Understands the laws of physics',
       'Passionately collects coconuts'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 13,
@@ -286,7 +298,8 @@ export const initialAnimals: Animal[] = [
       'Can slither through the tightest gaps',
       'Has an excellent sense of direction',
       'Is a patient observer'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 14,
@@ -308,7 +321,8 @@ export const initialAnimals: Animal[] = [
       'Has a perfect overview of the forest',
       'Knows every tree personally',
       'Is an expert in forest mathematics'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 15,
@@ -330,7 +344,8 @@ export const initialAnimals: Animal[] = [
       'Always finds the right way',
       'Can remember any maze',
       'Is a master of precision'
-    ]
+    ],
+    worldId: 'default'
   },
   {
     id: 16,
@@ -352,6 +367,7 @@ export const initialAnimals: Animal[] = [
       'Can recognize letters from a great distance',
       'Passionately collects words',
       'Is an expert in spelling'
-    ]
+    ],
+    worldId: 'default'
   }
 ];
