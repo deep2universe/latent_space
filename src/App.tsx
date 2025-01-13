@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { GameOverlay } from './components/GameOverlay';
 import { AnimalPanel } from './components/AnimalPanel';
 import { HUD } from './components/HUD';
