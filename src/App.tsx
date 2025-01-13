@@ -62,12 +62,6 @@ function App() {
           <h1 className="text-3xl font-bold text-purple-600">
             Mein magischer Zoo
           </h1>
-          <button 
-            onClick={uploadInitialAnimals}
-            className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition-colors"
-          >
-            Initialize Database
-          </button>
         </div>
       </header>
 

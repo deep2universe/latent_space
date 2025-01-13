@@ -2,6 +2,22 @@ import React, { useState } from 'react';
 import { Star, ShoppingBag, Clock, Layout, Globe2 } from 'lucide-react';
 import { useGameStore } from '../store/gameStore';
 import { useTranslation } from '../hooks/useTranslation';
+import { initialAnimals } from '../store/initialAnimals';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from '../../amplify/data/resource'; // Path to your backend resource definition
+
+const client = generateClient<Schema>();
+
+export async function uploadInitialAnimals() {
+    for (const animal of initialAnimals) {
+        console.log(animal);
+
+        await client.models.InitialAnimal.create({
+            ...animal
+        });
+    }
+    console.log('Initial animals uploaded successfully.');
+}
 
 interface HUDProps {
   timeLeft: number;
@@ -41,7 +57,13 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
         <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
         <span className="font-bold text-gray-700">{stars}</span>
       </div>
-      <button 
+      <button
+        onClick={uploadInitialAnimals}
+        className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition-colors"
+      >
+        Initialize Database
+      </button>
+      <button
         onClick={onViewModeChange}
         className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors flex items-center gap-2"
         title={t(`viewMode.${viewMode}`)}
