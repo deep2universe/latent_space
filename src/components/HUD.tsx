@@ -16,6 +16,7 @@ interface HUDProps {
     viewMode: 'cards' | 'world';
     onViewModeChange: () => void;
     onSignOut: () => void;
+}
 
 export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onViewModeChange }) => {
     const [languageMenuOpen, setLanguageMenuOpen] = useState(false);

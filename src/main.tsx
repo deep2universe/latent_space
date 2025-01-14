@@ -27,15 +27,6 @@ createRoot(document.getElementById('root')!).render(
             </video>
           )}
           <main>
-            <h1>Hello {user?.username}</h1>
-            <button onClick={signOut}>Sign out</button>
-            <HUD 
-              timeLeft={timeLeft} 
-              onShopClick={() => setShowShop(true)}
-              viewMode={viewMode}
-              onViewModeChange={() => setViewMode(prev => prev === 'cards' ? 'world' : 'cards')}
-              onSignOut={signOut}
-            />
             <App />
           </main>
         </>
