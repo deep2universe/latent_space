@@ -11,7 +11,7 @@ export interface Animal {
   unlocked: boolean;
   cost: number;
   characteristics?: string[];
-  worldId: string;
+  world_id: string;
 }
 
 export interface GameState {

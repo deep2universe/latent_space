@@ -1,9 +1,17 @@
 import { a, defineData, type ClientSchema } from '@aws-amplify/backend';
 
 const schema = a.schema({
+  MemoryCard: a.model({
+    id: a.id(),
+    world_id: a.string(),
+    name: a.string(),
+    image: a.string(),
+    description: a.string()
+  }).authorization(allow => [allow.publicApiKey()]),
+
   InitialAnimal: a.model({
     itemid: a.string(),
-    worldId: a.string(),
+    world_id: a.string(),
     name: a.string(),
     type: a.string(),
     image: a.string(),

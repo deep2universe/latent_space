@@ -41,7 +41,7 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
           // Convert and validate data according to schema
           const animalData = {
             itemid: String(animal.itemid),
-            worldId: animal.worldId,
+            world_id: animal.world_id,
             name: animal.name,
             type: animal.type,
             image: animal.image,

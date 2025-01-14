@@ -7,7 +7,7 @@ const client = generateClient<Schema>();
 export async function fetchDefaultAnimals(): Promise<Animal[]> {
     const { data: animals, errors } = await client.models.InitialAnimal.list({
         filter: {
-            worldId: { eq: 'default' }
+            world_id: { eq: 'default' }
         }
     });
     
@@ -29,6 +29,6 @@ export async function fetchDefaultAnimals(): Promise<Animal[]> {
         cost: animal.cost,
         characteristics: animal.characteristics || [],
         facts: animal.facts || [],
-        worldId: animal.worldId
+        world_id: animal.world_id
     }));
 }
