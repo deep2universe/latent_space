@@ -21,9 +21,11 @@ createRoot(document.getElementById('root')!).render(
       {({ signOut, user }) => (
         <>
           {!user && (
-            <video autoPlay loop muted>
-              <source src="https://cdn.pixabay.com/video/2021/09/11/88207-602915574_large.mp4" type="video/mp4" />
-            </video>
+            <div className="video-background">
+              <video autoPlay loop muted className="video-content">
+                <source src="https://cdn.pixabay.com/video/2021/09/11/88207-602915574_large.mp4" type="video/mp4" />
+              </video>
+            </div>
           )}
           <main>
             <App />
