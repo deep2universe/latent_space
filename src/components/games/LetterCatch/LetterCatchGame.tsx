@@ -57,7 +57,7 @@ export const LetterCatchGame: React.FC<LetterCatchGameProps> = ({ onProgress }) 
           <span className="font-bold">{gameState.score}</span>
         </div>
         <div className="text-red-500 font-bold">
-          Verpasst: {gameState.misses}/3
+          Missed: {gameState.misses}/3
         </div>
       </div>
 

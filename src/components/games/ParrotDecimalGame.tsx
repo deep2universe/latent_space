@@ -107,7 +107,7 @@ export const ParrotDecimalGame: React.FC<ParrotDecimalGameProps> = ({ onProgress
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          <span className="text-lg font-bold">{score} von {tasks.length} Punkten</span>
+          <span className="text-lg font-bold">{score} out of {tasks.length} points</span>
         </div>
       </div>
 

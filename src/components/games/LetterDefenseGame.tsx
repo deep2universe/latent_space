@@ -422,7 +422,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
               <div className="bg-white p-6 rounded-lg max-w-md">
                 <div className="flex items-center gap-2 mb-4 text-purple-600">
                   <Info className="w-6 h-6" />
-                  <h3 className="text-xl font-bold">Spielanleitung</h3>
+                  <h3 className="text-xl font-bold">Game Instructions</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
                   Drücke die Buchstaben auf deiner Tastatur, um fallende Buchstaben

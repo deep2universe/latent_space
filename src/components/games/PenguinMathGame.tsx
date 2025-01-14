@@ -61,7 +61,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          <span className="text-lg font-bold">{score} von {problems.length} Punkten</span>
+          <span className="text-lg font-bold">{score} out of {problems.length} points</span>
         </div>
       </div>
 

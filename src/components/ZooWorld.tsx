@@ -84,7 +84,7 @@ export const ZooWorld: React.FC<ZooWorldProps> = ({ onPlayGame }) => {
     generateTerrain();
   }, [stageSize]);
 
-  // Funktion zur Erzeugung einer zufälligen Position mit Mindestabstand zu anderen Tieren
+  // Function to generate a random position with a minimum distance from other animals
   /**
    * Generate a random position for an animal with a minimum distance from others
    */

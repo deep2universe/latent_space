@@ -328,8 +328,8 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="mb-4 flex justify-between items-center">
-        <div className="text-purple-600 font-bold">Punkte: {score}</div>
-        <div className="text-gray-600">Versuche: {attempts}</div>
+        <div className="text-purple-600 font-bold">Score: {score}</div>
+        <div className="text-gray-600">Attempts: {attempts}</div>
       </div>
 
       {showIntro && (

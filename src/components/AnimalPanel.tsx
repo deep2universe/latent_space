@@ -17,10 +17,10 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
     
     if (lowestStat > 80) {
       return {
-        text: `${name} ist überglücklich! ${
-          animal.type === 'Löwe'
-            ? 'Seine Mähne glänzt stolz in der Sonne.'
-            : 'Sie plantscht vergnügt mit ihrem Rüssel im Wasser.'
+        text: `${name} is overjoyed! ${
+          animal.type === 'Lion'
+            ? 'Its mane shines proudly in the sun.'
+            : 'It splashes happily with its trunk in the water.'
         }`,
         emoji: "🌟"
       };
@@ -28,10 +28,10 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
     
     if (lowestStat > 60) {
       return {
-        text: `${name} fühlt sich wohl! ${
-          animal.type === 'Löwe'
-            ? 'Er döst entspannt im Schatten und schnurrt leise.'
-            : 'Sie spielt fröhlich mit ihrer Familie und genießt den Tag.'
+        text: `${name} feels good! ${
+          animal.type === 'Lion'
+            ? 'It dozes relaxed in the shade and purrs softly.'
+            : 'It plays happily with its family and enjoys the day.'
         }`,
         emoji: "😊"
       };
@@ -39,10 +39,10 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
     
     if (lowestStat > 40) {
       return {
-        text: `${name} könnte etwas Aufmerksamkeit gebrauchen! ${
-          animal.type === 'Löwe'
-            ? 'Er schaut erwartungsvoll zu dir herüber.'
-            : 'Sie wedelt unruhig mit ihren Ohren.'
+        text: `${name} could use some attention! ${
+          animal.type === 'Lion'
+            ? 'It looks expectantly over at you.'
+            : 'It wags its ears restlessly.'
         }`,
         emoji: "😐"
       };
@@ -50,20 +50,20 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
     
     if (lowestStat > 20) {
       return {
-        text: `${name} braucht deine Hilfe! ${
-          animal.type === 'Löwe'
-            ? 'Seine Mähne hängt traurig herunter.'
-            : 'Ihr Rüssel hängt mutlos nach unten.'
+        text: `${name} needs your help! ${
+          animal.type === 'Lion'
+            ? 'Its mane hangs sadly down.'
+            : 'Its trunk hangs dejectedly down.'
         }`,
         emoji: "😢"
       };
     }
     
     return {
-      text: `${name} fühlt sich gar nicht gut! ${
-        animal.type === 'Löwe'
-          ? 'Er liegt teilnahmslos in der Ecke seines Geheges.'
-          : 'Sie steht einsam und traurig in ihrem Gehege.'
+      text: `${name} is not feeling well at all! ${
+        animal.type === 'Lion'
+          ? 'It lies apathetically in the corner of its enclosure.'
+          : 'It stands lonely and sad in its enclosure.'
       }`,
       emoji: "😭"
     };

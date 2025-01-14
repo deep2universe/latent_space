@@ -19,7 +19,7 @@ export const Shop: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       <div className="bg-white rounded-xl shadow-xl w-full max-w-4xl m-4 max-h-[90vh] flex flex-col">
         <div className="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white rounded-t-xl">
           <div className="flex items-center gap-4">
-            <h2 className="text-2xl font-bold text-purple-600">Tierhandlung</h2>
+            <h2 className="text-2xl font-bold text-purple-600">Animal Shop</h2>
             <div className="flex items-center gap-2 bg-purple-50 px-3 py-1 rounded-full">
               <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
               <span className="font-bold">{stars}</span>

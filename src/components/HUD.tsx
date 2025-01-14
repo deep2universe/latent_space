@@ -29,14 +29,6 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
     /**
      * Available languages for the game
      */
-    const languages = [
-        { code: 'de', name: 'Deutsch' },
-        { code: 'en', name: 'English' },
-        { code: 'es', name: 'Español' },
-        { code: 'fr', name: 'Français' },
-        { code: 'ja', name: '日本語' }
-    ];
-
     const uploadInitialAnimals = async () => {
         try {
             for (const animal of initialAnimals) {

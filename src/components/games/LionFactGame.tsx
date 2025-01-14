@@ -61,7 +61,7 @@ export const LionFactGame: React.FC<LionFactGameProps> = ({ onProgress }) => {
       {/* Score */}
       <div className="text-center mb-6">
         <p className="text-lg font-semibold text-purple-600">
-          Punkte: {stats.correct} von {stats.total}
+          Points: {stats.correct} out of {stats.total}
         </p>
       </div>
 

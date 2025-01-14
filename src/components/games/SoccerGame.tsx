@@ -149,7 +149,7 @@ export const SoccerGame: React.FC<GameProps> = ({ onProgress }) => {
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          <span className="text-lg font-bold">Tore: {score}</span>
+          <span className="text-lg font-bold">Goals: {score}</span>
         </div>
       </div>
 

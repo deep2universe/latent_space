@@ -260,7 +260,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
 
       {gameState.gameOver && (
         <div className="mt-6 text-center">
-          <p className="text-lg mb-4">Punktzahl: {gameState.score}</p>
+          <p className="text-lg mb-4">Score: {gameState.score}</p>
           <button
             onClick={restartGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"

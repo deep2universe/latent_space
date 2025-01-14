@@ -125,8 +125,8 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="mb-4 flex justify-between items-center">
-        <div className="text-purple-600 font-bold">Punkte: {score}</div>
-        <div className="text-gray-600">Versuche: {attempts}</div>
+        <div className="text-purple-600 font-bold">Score: {score}</div>
+        <div className="text-gray-600">Attempts: {attempts}</div>
       </div>
 
       <div className="relative bg-gray-100 rounded-lg p-4">

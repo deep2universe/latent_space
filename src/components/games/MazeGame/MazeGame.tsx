@@ -60,8 +60,8 @@ export const MazeGame: React.FC<MazeGameProps> = ({ onProgress }) => {
       {gameState === 'won' && (
         <div className="mt-4 text-center">
           <div className="p-4 bg-green-100 text-green-700 rounded-lg mb-4">
-            <p className="text-lg font-bold">Geschafft! 🎉</p>
-            <p>Du hast das Labyrinth erfolgreich durchquert!</p>
+            <p className="text-lg font-bold">Success! 🎉</p>
+            <p>You successfully navigated the maze!</p>
           </div>
           <button
             onClick={resetGame}

@@ -235,8 +235,8 @@ export const FroggerGame: React.FC<FroggerGameProps> = ({ onProgress }) => {
 
       {gameState.gameOver && (
         <div className="mt-6 text-center">
-          <h3 className="text-2xl font-bold text-purple-600 mb-4">Spiel vorbei!</h3>
-          <p className="text-lg mb-4">Du hast {gameState.score} Punkte erreicht!</p>
+          <h3 className="text-2xl font-bold text-purple-600 mb-4">Game Over!</h3>
+          <p className="text-lg mb-4">You scored {gameState.score} points!</p>
           <button
             onClick={restartGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"

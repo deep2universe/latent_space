@@ -105,7 +105,7 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
       <div className="w-full max-w-4xl mx-auto p-4">
         <div className="flex justify-between items-center mb-6">
           <div className="text-purple-600 font-semibold">
-            Züge: {moves}
+            Moves: {moves}
           </div>
           <div className="text-purple-600 font-semibold">
             Paare gefunden: {matches} von {elephantMemoryCards.length}

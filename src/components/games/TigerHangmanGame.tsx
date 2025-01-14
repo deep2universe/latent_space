@@ -65,7 +65,7 @@ export const TigerHangmanGame: React.FC<TigerHangmanGameProps> = ({ onProgress }
         <div className="text-6xl font-mono mb-8">{getDisplayWord()}</div>
         
         <div className="mb-4 text-lg">
-          Verbleibende Versuche: {remainingTries}
+          Remaining Tries: {remainingTries}
         </div>
 
         {gameStatus === 'won' && (

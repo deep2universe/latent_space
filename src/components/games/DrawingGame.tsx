@@ -29,16 +29,16 @@ const colors = [
 ];
 
 const guesses = [
-  { guess: "Ist das ein tanzender Elefant mit Ballerina-Tutu? 🎭", type: "funny" },
-  { guess: "Oh, ich sehe eine Giraffe beim Skateboarding! 🛹", type: "funny" },
-  { guess: "Das muss ein Pinguin sein, der Limbo tanzt! 💃", type: "funny" },
-  { guess: "Ist das ein Löwe beim Pizzabacken? 🍕", type: "funny" },
-  { guess: "Ein Känguru beim Videospielen? 🎮", type: "funny" },
-  { guess: "Wow! Ein wunderschönes Kunstwerk! 🎨", type: "praise" },
-  { guess: "Das ist ja fantastisch geworden! ⭐", type: "praise" },
-  { guess: "Du bist ein echtes Künstlergenie! 🌟", type: "praise" },
-  { guess: "Diese Farben sind toll gewählt! 🎨", type: "praise" },
-  { guess: "Die Linien sind so ausdrucksstark! ✨", type: "praise" }
+  { guess: "Is that a dancing elephant in a ballerina tutu? 🎭", type: "funny" },
+  { guess: "Oh, I see a giraffe skateboarding! 🛹", type: "funny" },
+  { guess: "That must be a penguin doing the limbo! 💃", type: "funny" },
+  { guess: "Is that a lion baking pizza? 🍕", type: "funny" },
+  { guess: "A kangaroo playing video games? 🎮", type: "funny" },
+  { guess: "Wow! A beautiful piece of art! 🎨", type: "praise" },
+  { guess: "That's fantastic! ⭐", type: "praise" },
+  { guess: "You're a true artist genius! 🌟", type: "praise" },
+  { guess: "These colors are well chosen! 🎨", type: "praise" },
+  { guess: "The lines are so expressive! ✨", type: "praise" }
 ];
 
 export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
