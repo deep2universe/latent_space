@@ -9,9 +9,8 @@ export const decimalTasks: DecimalTask[] = [
   {
     number: 0.3,
     range: 'small',
-    hint: "0,3 ist zwischen 0 und 1, etwas näher an 0",
-    // Explanation of the decimal number's position on the number line
-    explanation: "0,3 liegt genau bei 3 von 10 Schritten zwischen 0 und 1"
+    hint: "0.3 is between 0 and 1, slightly closer to 0",
+    explanation: "0.3 is exactly at 3 out of 10 steps between 0 and 1"
   },
   {
     number: 0.8,
