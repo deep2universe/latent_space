@@ -9,10 +9,7 @@ import outputs from "../amplify_outputs.json";
 
 // Enable debug logging for API calls
 Amplify.configure({
-  ...outputs,
-  Logging: {
-    level: 'DEBUG'
-  }
+  ...outputs
 });
 
 /**
@@ -20,7 +17,7 @@ Amplify.configure({
  */
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Authenticator>
+    <Authenticator signUpAttributes={[]}>
       {({ signOut, user }) => (
         <main>
           <h1>Hello {user?.username}</h1>
