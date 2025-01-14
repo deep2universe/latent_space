@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { elephantMemoryCards, MemoryCard } from '../../data/memoryCards';
+import { MemoryCard } from '../../data/memoryCards';
+import { fetchMemoryCards } from '../../services/memoryCardService';
 import { Sparkles, Star } from 'lucide-react';
 
 interface MemoryGameCard extends MemoryCard {
@@ -29,25 +30,31 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
     }
   }, [matches, moves, onProgress]);
 
-  const initializeGame = () => {
-    const cardPairs = [...elephantMemoryCards, ...elephantMemoryCards]
-      .map((card, index) => ({
-        ...card,
-        id: index,
-        isFlipped: false,
-        isMatched: false
-      }))
-      .sort(() => Math.random() - 0.5);
+  const initializeGame = async () => {
+    try {
+      const fetchedCards = await fetchMemoryCards();
+      const cardPairs = [...fetchedCards, ...fetchedCards]
+        .map((card, index) => ({
+          ...card,
+          id: index,
+          isFlipped: false,
+          isMatched: false
+        }))
+        .sort(() => Math.random() - 0.5);
 
-    setCards(cardPairs);
-    setFlippedIndexes([]);
-    setMoves(0);
-    setMatches(0);
-    setIsGameOver(false);
+      setCards(cardPairs);
+      setFlippedIndexes([]);
+      setMoves(0);
+      setMatches(0);
+      setIsGameOver(false);
+    } catch (error) {
+      console.error('Failed to initialize game:', error);
+      alert('Failed to start the game. Please try again later.');
+    }
   };
 
   const calculateProgress = () => {
-    const totalPairs = elephantMemoryCards.length;
+    const totalPairs = cards.length / 2;
     const minMoves = totalPairs;
     const maxMoves = totalPairs * 3;
     
@@ -80,7 +87,7 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
         ));
         setMatches(prev => {
           const newMatches = prev + 1;
-          if (newMatches === elephantMemoryCards.length) {
+          if (newMatches === cards.length / 2) {
             setIsGameOver(true);
           }
           return newMatches;
@@ -149,7 +156,7 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
               ))}
             </div>
             <p className="text-gray-600 mb-6">
-              Du hast alle {elephantMemoryCards.length} Paare in {moves} Zügen gefunden!
+              Du hast alle {cards.length / 2} Paare in {moves} Zügen gefunden!
             </p>
             <button
               onClick={initializeGame}

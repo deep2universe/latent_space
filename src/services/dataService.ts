@@ -24,7 +24,7 @@ export async function fetchDefaultAnimals(): Promise<Animal[]> {
         game: animal.game,
         happiness: animal.happiness,
         energy: animal.energy,
-        hunger: animal.happiness, // Initialize hunger same as happiness
+        hunger: animal.happiness,
         unlocked: animal.unlocked,
         cost: animal.cost,
         characteristics: animal.characteristics || [],
