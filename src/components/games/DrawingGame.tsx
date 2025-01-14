@@ -250,7 +250,7 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-white/95 p-8 rounded-xl shadow-lg max-w-md text-center">
               <img
-                src="https://images.unsplash.com/photo-1579168765467-3b235f938439?w=400&auto=format&fit=crop"
+                src="https://latent-space.s3.us-east-1.amazonaws.com/Koala.png"
                 alt="Koala"
                 className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
               />
