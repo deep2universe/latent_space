@@ -31,7 +31,7 @@ export const LionFactGame: React.FC<LionFactGameProps> = ({ onProgress }) => {
     setStats(newStats);
     setShowAnswer(true);
 
-    // Belohne das Tier schon während des Spiels
+    // Reward the animal already during the game
     const progress = (newStats.correct / newStats.total) * 100;
     onProgress(progress);
   };
@@ -78,20 +78,20 @@ export const LionFactGame: React.FC<LionFactGameProps> = ({ onProgress }) => {
               className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
             >
               <Check className="w-5 h-5" />
-              Wahr
+              True
             </button>
             <button
               onClick={() => handleAnswer(false)}
               className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors flex items-center gap-2"
             >
               <X className="w-5 h-5" />
-              Falsch
+              False
             </button>
           </div>
         ) : (
           <div className="text-center">
             <div className={`text-lg font-bold mb-2 ${currentFact.answer === true ? 'text-green-500' : 'text-red-500'}`}>
-              {currentFact.answer ? 'Wahr!' : 'Falsch!'}
+              {currentFact.answer ? 'True!' : 'False!'}
             </div>
             <p className="text-gray-600 mb-4">{currentFact.explanation}</p>
             {!isGameOver && (
@@ -99,7 +99,7 @@ export const LionFactGame: React.FC<LionFactGameProps> = ({ onProgress }) => {
                 onClick={nextQuestion}
                 className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 mx-auto"
               >
-                Nächste Frage
+                Next Question
                 <ChevronRight className="w-5 h-5" />
               </button>
             )}
@@ -109,16 +109,16 @@ export const LionFactGame: React.FC<LionFactGameProps> = ({ onProgress }) => {
 
       {isGameOver && (
         <div className="text-center bg-purple-100 rounded-xl p-6">
-          <h3 className="text-2xl font-bold text-purple-600 mb-2">Spiel beendet!</h3>
+          <h3 className="text-2xl font-bold text-purple-600 mb-2">Game Over!</h3>
           <p className="text-lg">
-            Du hast {stats.correct} von {facts.length} Fragen richtig beantwortet!
+            You answered {stats.correct} out of {facts.length} questions correctly!
           </p>
           {stats.correct === facts.length ? (
-            <p className="text-green-600 mt-2">Perfekt! Du bist ein echter Löwen-Experte! 🦁👑</p>
+            <p className="text-green-600 mt-2">Perfect! You're a real lion expert! 🦁👑</p>
           ) : stats.correct >= facts.length * 0.7 ? (
-            <p className="text-green-600 mt-2">Super gemacht! Du weißt schon sehr viel über Löwen! 🦁</p>
+            <p className="text-green-600 mt-2">Well done! You know a lot about lions! 🦁</p>
           ) : (
-            <p className="text-purple-600 mt-2">Weiter üben! Du lernst jeden Tag etwas Neues über Löwen! 📚</p>
+            <p className="text-purple-600 mt-2">Keep practicing! You learn something new about lions every day! 📚</p>
           )}
         </div>
       )}

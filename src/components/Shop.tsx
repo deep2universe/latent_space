@@ -47,7 +47,7 @@ export const Shop: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </div>
                 
                 <h3 className="text-lg font-semibold mb-2">
-                  {animal.name} der {animal.type}
+                  {animal.name} the {animal.type}
                 </h3>
 
                 <div className="space-y-2 mb-4 flex-1">
@@ -66,7 +66,7 @@ export const Shop: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   }`}
                 >
                   <Star className="w-4 h-4" />
-                  <span>{animal.cost} Sterne</span>
+                  <span>{animal.cost} stars</span>
                 </button>
               </div>
             ))}

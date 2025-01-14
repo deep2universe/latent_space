@@ -108,7 +108,7 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
             Moves: {moves}
           </div>
           <div className="text-purple-600 font-semibold">
-            Paare gefunden: {matches} von {elephantMemoryCards.length}
+            Pairs found: {matches} out of {elephantMemoryCards.length}
           </div>
         </div>
 
@@ -141,7 +141,7 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
               <div className="bg-white rounded-xl p-8 text-center max-w-md mx-4">
                 <h3 className="text-2xl font-bold text-purple-600 mb-4">
-                  Fantastisch gemacht! 🎉
+                  Fantastic job! 🎉
                 </h3>
                 <div className="flex justify-center gap-2 mb-4">
                   {[...Array(getStarRating())].map((_, i) => (
@@ -149,13 +149,13 @@ export const ElephantMemoryGame: React.FC<ElephantMemoryGameProps> = ({ onProgre
                   ))}
                 </div>
                 <p className="text-gray-600 mb-6">
-                  Du hast alle {elephantMemoryCards.length} Paare in {moves} Zügen gefunden!
+                  You found all {elephantMemoryCards.length} pairs in {moves} moves!
                 </p>
                 <button
                     onClick={initializeGame}
                     className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
                 >
-                  Nochmal spielen
+                  Play again
                 </button>
               </div>
             </div>

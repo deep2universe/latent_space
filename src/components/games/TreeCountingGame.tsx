@@ -17,8 +17,8 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
   const [worldContainer, setWorldContainer] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [stageSize] = useState({ width: 600, height: 400 });
-  const worldSize = 1200; // Kleinere Welt für bessere Navigation
-  const padding = 100; // Padding um die Spielwelt
+  const worldSize = 1200; // Smaller world for better navigation
+  const padding = 100; // Padding around the game world
 
   const initializeGame = () => {
     const randomTotal = Math.floor(Math.random() * 13) + 3;
@@ -26,7 +26,7 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
     setUserGuess('');
     setShowResult(false);
 
-    // Bäume mit Mindestabstand zum Rand platzieren
+    // Place trees with minimum distance to the edge
     const newTrees = Array.from({ length: 500 }, (_, index) => {
       const isBlue = index < randomTotal;
       return {
@@ -63,15 +63,15 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
   useEffect(() => {
     const animate = () => {
       setWorldContainer(prev => {
-        // Berechne die maximale Scrolldistanz
+        // Calculate the maximum scroll distance
         const maxScrollX = worldSize - stageSize.width;
         const maxScrollY = worldSize - stageSize.height;
 
-        // Berechne die Zielposition basierend auf der Mausposition
+        // Calculate the target position based on the mouse position
         const targetX = -maxScrollX * mousePos.x;
         const targetY = -maxScrollY * mousePos.y;
 
-        // Sanfte Bewegung zur Zielposition
+        // Smooth movement to the target position
         const newX = prev.x + (targetX - prev.x) * 0.1;
         const newY = prev.y + (targetY - prev.y) * 0.1;
 
@@ -112,7 +112,7 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
     g.lineStyle(4, 0xFFFFFF, 0.8);
     g.drawRect(0, 0, worldSize, worldSize);
     
-    // Zeichne ein Raster für bessere Orientierung
+    // Draw a grid for better orientation
     g.lineStyle(1, 0xFFFFFF, 0.2);
     for (let i = padding; i < worldSize; i += padding) {
       g.moveTo(i, 0);
@@ -131,9 +131,9 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
 
       <div className="relative bg-gray-100 rounded-lg p-4">
         <div className="mb-4 text-center text-sm bg-blue-100 text-blue-700 p-2 rounded">
-          Bewege die Maus über das Spielfeld, um den Wald zu erkunden!
+          Move the mouse over the field to explore the forest!
           <br />
-          <span className="text-xs">Fahre an die Ränder des Spielfelds, um weiter zu scrollen.</span>
+          <span className="text-xs">Move to the edges of the field to scroll further.</span>
         </div>
 
         <div 
@@ -165,7 +165,7 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
 
         <div className="mt-4">
           <div className="text-center mb-2 font-medium text-gray-700">
-            Wie viele blaue Bäume hast du gefunden?
+            How many blue trees did you find?
           </div>
           {!showResult ? (
             <div className="flex gap-4 justify-center">
@@ -184,7 +184,7 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
                 className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 <Check className="w-5 h-5" />
-                Raten
+                Guess
               </button>
             </div>
           ) : (
@@ -196,11 +196,11 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
               }`}>
                 <p className="text-lg font-bold mb-2">
                   {parseInt(userGuess) === totalBlueTrees 
-                    ? 'Perfekt! 🎉' 
-                    : 'Fast richtig! 👀'}
+                    ? 'Perfect! 🎉' 
+                    : 'Almost right! 👀'}
                 </p>
                 <p>
-                  Es waren {totalBlueTrees} blaue Bäume. Du hast {userGuess} geraten.
+                  There were {totalBlueTrees} blue trees. You guessed {userGuess}.
                 </p>
               </div>
               <button
@@ -208,7 +208,7 @@ export const TreeCountingGame: React.FC<TreeCountingGameProps> = ({ onProgress }
                 className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 mx-auto"
               >
                 <RotateCcw className="w-5 h-5" />
-                Nochmal spielen
+                Play again
               </button>
             </div>
           )}

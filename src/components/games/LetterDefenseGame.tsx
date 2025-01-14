@@ -39,22 +39,22 @@ interface Impact {
 }
 
 // =============================
-// Einstellungen
+// Settings
 // =============================
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 const DEFENSE_HEIGHT = 40;
 
-// Geschwindigkeit & Zeiten
+// Speed & Timings
 const LETTER_SPEED = 2;
 const LASER_DURATION = 1000; // in ms
 const IMPACT_DURATION = 500; // in ms (0.5 Sekunden)
 
-// Wie viele verpasste Buchstaben erlaubt sind
+// How many missed letters are allowed
 const MAX_IMPACTS: number = 8;
 
 // =============================
-// Textstil der Buchstaben
+// Text style of the letters
 // =============================
 const letterStyle = new TextStyle({
   fontFamily: 'Arial',
@@ -103,11 +103,11 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   const laserAudioRef = useRef<HTMLAudioElement>(
       typeof Audio !== 'undefined' ? new Audio('/sounds/laser.mp3') : null
   );
-  // Einschlag-Sound
+  // Impact sound
   const impactAudioRef = useRef<HTMLAudioElement>(
       typeof Audio !== 'undefined' ? new Audio('/sounds/impact.mp3') : null
   );
-  // Neues Audio für das Tutorial
+  // New audio for the tutorial
   const sunriseAudioRef = useRef<HTMLAudioElement>(
       typeof Audio !== 'undefined' ? new Audio('/sounds/sunrise.mp3') : null
   );
@@ -124,7 +124,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
     quality: 0.5,
   });
 
-  // Roter Bodeneinschlag
+  // Red ground impact
   const impactGlowFilter = new GlowFilter({
     distance: 25,
     outerStrength: 14,
@@ -134,11 +134,11 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   });
 
   // ============================
-  // Tutorial-Logik
+// Tutorial logic
   // ============================
   useEffect(() => {
     if (!showTutorial) {
-      // Tutorial ist weg -> Spiel starten
+// Tutorial is gone -> Start game
       setGameStarted(true);
     }
   }, [showTutorial]);
@@ -151,9 +151,9 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
     setGameStarted(true);
   };
 
-  // *** Hier kommt die Logik für sunrise.mp3 ***
-  // Wir spielen das Audio ab, sobald das Tutorial (showTutorial) angezeigt wird,
-  // und stoppen es, wenn das Tutorial verschwindet.
+  // *** Here comes the logic for sunrise.mp3 ***
+  // We play the audio as soon as the tutorial (showTutorial) is displayed,
+  // and stop it when the tutorial disappears.
   useEffect(() => {
     if (showTutorial) {
       // Startet das Audio (einmalig, kein Loop)
@@ -174,7 +174,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   }, [showTutorial]);
 
   // ============================
-  // Buchstaben erzeugen
+  // Generate letters
   // ============================
   const spawnLetter = useCallback(() => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -194,19 +194,19 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   }, []);
 
   // ============================
-  // Haupt-Loop (Animation)
+  // Main loop (animation)
   // ============================
   useEffect(() => {
     if (!gameStarted || gameOver) return;
 
     const gameLoop = (timestamp: number) => {
-      // 1) Buchstaben spawnen (alle 2 Sekunden)
+      // 1) Spawn letters (every 2 seconds)
       if (timestamp - lastSpawnRef.current > 2000) {
         spawnLetter();
         lastSpawnRef.current = timestamp;
       }
 
-      // 2) Buchstaben fallen lassen
+      // 2) Drop letters
       setLetters((prevLetters) => {
         const activeLetters = prevLetters.filter((l) => !l.destroyed);
         const movedLetters = activeLetters.map((letter) => ({
@@ -214,12 +214,12 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
           y: letter.y + LETTER_SPEED,
         }));
 
-        // Boden erreicht?
+        // Reached the ground?
         const missedLetters = movedLetters.filter((l) => l.y > GAME_HEIGHT);
 
         if (missedLetters.length > 0) {
           missedLetters.forEach((m) => {
-            // 2a) Roter Einschlag
+            // 2a) Red impact
             setImpacts((prevI) => [
               ...prevI,
               {
@@ -230,9 +230,9 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
               },
             ]);
 
-            // 2b) Impact-Sound abspielen
+            // 2b) Play impact sound
             if (impactAudioRef.current) {
-              // Für parallele Sounds ggf. cloneNode verwenden
+              // Use cloneNode for parallel sounds if needed
               impactAudioRef.current.currentTime = 0;
               impactAudioRef.current.play().catch((err) => {
                 console.warn('Impact sound play error:', err);
@@ -240,7 +240,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
             }
           });
 
-          // 3) Misses hochzählen
+          // 3) Count misses
           setMisses((oldMisses) => {
             const newMisses = oldMisses + missedLetters.length;
             if (newMisses >= MAX_IMPACTS) {
@@ -250,28 +250,28 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
           });
         }
 
-        // nur sichtbare Buchstaben zurückgeben
+        // return only visible letters
         return movedLetters.filter((l) => l.y <= GAME_HEIGHT);
       });
 
-      // 3) Laser entfernen, wenn sie abgelaufen sind
+      // 3) Remove lasers when they expire
       const now = Date.now();
       setLasers((prevLasers) =>
           prevLasers.filter((laser) => now - laser.timestamp < LASER_DURATION)
       );
 
-      // 4) Rote Einschläge entfernen (älter als IMPACT_DURATION)
+      // 4) Remove red impacts (older than IMPACT_DURATION)
       setImpacts((prevImpacts) =>
           prevImpacts.filter((impact) => now - impact.timestamp < IMPACT_DURATION)
       );
 
-      // Nächsten Frame anfordern
+      // Request next frame
       if (!gameOver) {
         animationFrameRef.current = requestAnimationFrame(gameLoop);
       }
     };
 
-    // Game-Loop starten
+    // Start game loop
     animationFrameRef.current = requestAnimationFrame(gameLoop);
 
     // Cleanup
@@ -283,7 +283,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   }, [spawnLetter, gameStarted, gameOver]);
 
   // ============================
-  // Keyboard-Input (Laser)
+  // Keyboard input (laser)
   // ============================
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -291,13 +291,13 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
 
       const key = e.key.toUpperCase();
 
-      // Alle passenden Buchstaben
+      // All matching letters
       const matchingLetters = letters.filter(
           (l) => !l.destroyed && l.char === key
       );
       if (matchingLetters.length === 0) return;
 
-      // 1) Laser-Sound abspielen
+      // 1) Play laser sound
       if (laserAudioRef.current) {
         laserAudioRef.current.currentTime = 0;
         laserAudioRef.current.play().catch((err) => {
@@ -305,7 +305,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
         });
       }
 
-      // 2) Laser erzeugen
+      // 2) Create laser
       const newLasers = matchingLetters.map((letter) => ({
         id: laserIdCounter.current++,
         startX: GAME_WIDTH / 2,
@@ -316,7 +316,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
       }));
       setLasers((prev) => [...prev, ...newLasers]);
 
-      // 3) Buchstaben als zerstört markieren
+      // 3) Mark letters as destroyed
       setLetters((prevLetters) =>
           prevLetters.map((l) =>
               matchingLetters.some((ml) => ml.id === l.id)
@@ -325,7 +325,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
           )
       );
 
-      // 4) Score aktualisieren
+      // 4) Update score
       setScore((prev) => {
         const newScore = prev + matchingLetters.length * 10;
         onProgress(Math.min((newScore / 500) * 100, 100));
@@ -340,7 +340,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   }, [letters, gameStarted, gameOver, onProgress]);
 
   // ============================
-  // Zeichen-Funktionen
+  // Drawing functions
   // ============================
   const drawGrass = useCallback((g: PIXI.Graphics) => {
     g.clear();
@@ -361,17 +361,17 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
     g.endFill();
   }, []);
 
-  // Zeichnet Laser (grüne Linien)
+  // Draws lasers (green lines)
   const drawLasers = useCallback(
       (g: PIXI.Graphics) => {
         g.clear();
         lasers.forEach((laser) => {
-          // Äußere Linie (dicker, halbtransparent)
+          // Outer line (thicker, semi-transparent)
           g.lineStyle(6, 0x00ff00, 0.3);
           g.moveTo(laser.startX, laser.startY);
           g.lineTo(laser.endX, laser.endY);
 
-          // Innere Linie (dünn, deckend)
+          // Inner line (thin, opaque)
           g.lineStyle(2, 0x00ff00, 1);
           g.moveTo(laser.startX, laser.startY);
           g.lineTo(laser.endX, laser.endY);
@@ -380,12 +380,12 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
       [lasers]
   );
 
-  // Zeichnet die Einschläge (rote Kreise) am Boden
+  // Draws the impacts (red circles) on the ground
   const drawImpacts = useCallback(
       (g: PIXI.Graphics) => {
         g.clear();
         impacts.forEach((impact) => {
-          // Zeichne z. B. einen roten Kreis am Boden
+          // Draw a red circle on the ground, for example
           g.beginFill(0xff4444, 1);
           g.drawCircle(impact.x, impact.y, 18);
           g.endFill();
@@ -395,7 +395,7 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
   );
 
   // ============================
-  // Spiel zurücksetzen
+  // Reset game
   // ============================
   const resetGame = () => {
     setScore(0);
@@ -425,10 +425,10 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
                   <h3 className="text-xl font-bold">Game Instructions</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Drücke die Buchstaben auf deiner Tastatur, um fallende Buchstaben
-                  mit Laserstrahlen abzuschießen.
-                  Verpasse möglichst keine Buchstaben!
-                  Nach {MAX_IMPACTS} verpassten Buchstaben ist das Spiel vorbei.
+                  Press the letters on your keyboard to shoot falling letters
+                  with laser beams.
+                  Try not to miss any letters!
+                  After {MAX_IMPACTS} missed letters, the game is over.
                 </p>
                 <div className="flex items-center gap-2 mb-4">
                   <input
@@ -438,27 +438,27 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
                       className="rounded text-purple-600"
                   />
                   <label htmlFor="dontShowAgain" className="text-sm text-gray-600">
-                    Nicht mehr anzeigen
+                    Don't show again
                   </label>
                 </div>
                 <button
                     onClick={() => hideTutorial(false)}
                     className="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
                 >
-                  Verstanden
+                  Understood
                 </button>
               </div>
             </div>
         )}
 
-        {/* Score und verpasste Buchstaben */}
+        {/* Score and missed letters */}
         <div className="mb-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
             <span className="font-bold">{score}</span>
           </div>
           <div className="text-red-500">
-            Verpasst: {misses}/{MAX_IMPACTS}
+            Missed: {misses}/{MAX_IMPACTS}
           </div>
         </div>
 
@@ -469,13 +469,13 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
             options={{ backgroundColor: 0x000000 }}
         >
           <Container>
-            {/* Boden */}
+            {/* Ground */}
             <Graphics draw={drawGrass} />
 
-            {/* Defense-Blöckchen */}
+            {/* Defense blocks */}
             <Graphics draw={drawDefense} />
 
-            {/* Buchstaben (nicht zerstörte) */}
+            {/* Letters (not destroyed) */}
             {letters
                 .filter((l) => !l.destroyed)
                 .map((letter) => (
@@ -489,31 +489,31 @@ export const LetterDefenseGame: React.FC<LetterDefenseGameProps> = ({
                     />
                 ))}
 
-            {/* Laser mit grünem Glow */}
+            {/* Lasers with green glow */}
             <Container filters={[laserGlowFilter]}>
               <Graphics draw={drawLasers} />
             </Container>
 
-            {/* Rote Einschläge (Impact) am Boden */}
+            {/* Red impacts on the ground */}
             <Container filters={[impactGlowFilter]}>
               <Graphics draw={drawImpacts} />
             </Container>
           </Container>
         </Stage>
 
-        {/* GameOver-Overlay */}
+        {/* GameOver overlay */}
         {gameOver && (
             <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
               <div className="bg-white p-6 rounded-lg text-center">
                 <h3 className="text-xl font-bold text-purple-600 mb-2">
-                  Spiel vorbei!
+                  Game Over!
                 </h3>
-                <p className="mb-4">Deine Punktzahl: {score}</p>
+                <p className="mb-4">Your score: {score}</p>
                 <button
                     onClick={resetGame}
                     className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
                 >
-                  Nochmal spielen
+                  Play again
                 </button>
               </div>
             </div>

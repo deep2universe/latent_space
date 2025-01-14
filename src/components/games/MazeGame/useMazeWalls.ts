@@ -12,7 +12,7 @@ export const useMazeWalls = () => {
     { x1: STAGE_WIDTH, y1: 0, x2: STAGE_WIDTH, y2: 200 },
     { x1: STAGE_WIDTH, y1: 300, x2: STAGE_WIDTH, y2: STAGE_HEIGHT },
 
-    // Innere Wände - dynamisch generiert für mittlere Schwierigkeit
+    // Inner walls - dynamically generated for medium difficulty
     { x1: 100, y1: 100, x2: 200, y2: 100 },
     { x1: 200, y1: 100, x2: 200, y2: 300 },
     { x1: 100, y1: 300, x2: 200, y2: 300 },

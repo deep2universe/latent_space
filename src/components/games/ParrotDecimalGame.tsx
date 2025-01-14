@@ -113,11 +113,11 @@ export const ParrotDecimalGame: React.FC<ParrotDecimalGameProps> = ({ onProgress
 
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h3 className="text-xl font-bold text-center text-purple-600 mb-6">
-          Wo liegt die Zahl {currentTask.number}?
+          Where is the number {currentTask.number}?
         </h3>
 
         <div className="mb-4 p-3 bg-purple-50 rounded-lg text-purple-700 text-sm">
-          💡 Tipp: {currentTask.hint}
+          💡 Tip: {currentTask.hint}
         </div>
 
         <div className="my-8">
@@ -139,7 +139,7 @@ export const ParrotDecimalGame: React.FC<ParrotDecimalGameProps> = ({ onProgress
                   <ThumbsDown className="w-5 h-5" />
                 )}
                 <span className="font-bold">
-                  {isCorrect ? 'Super gemacht!' : 'Fast richtig!'}
+                  {isCorrect ? 'Well done!' : 'Almost right!'}
                 </span>
               </div>
               <p>{currentTask.explanation}</p>
@@ -150,7 +150,7 @@ export const ParrotDecimalGame: React.FC<ParrotDecimalGameProps> = ({ onProgress
                 onClick={nextTask}
                 className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2"
               >
-                Nächste Aufgabe
+                Next task
                 <ArrowRight className="w-5 h-5" />
               </button>
             )}
@@ -160,16 +160,16 @@ export const ParrotDecimalGame: React.FC<ParrotDecimalGameProps> = ({ onProgress
 
       {isLastTask && showAnswer && (
         <div className="text-center bg-purple-100 rounded-xl p-6">
-          <h3 className="text-2xl font-bold text-purple-600 mb-2">Spiel beendet!</h3>
+          <h3 className="text-2xl font-bold text-purple-600 mb-2">Game Over!</h3>
           <p className="text-lg mb-4">
-            Du hast {score} von {tasks.length} Aufgaben richtig gelöst!
+            You solved {score} out of {tasks.length} tasks correctly!
           </p>
           {score === tasks.length ? (
-            <p className="text-green-600">Fantastisch! Du bist ein Dezimalzahlen-Profi! 🎉</p>
+            <p className="text-green-600">Fantastic! You're a decimal numbers expert! 🎉</p>
           ) : score >= tasks.length * 0.7 ? (
-            <p className="text-green-600">Super gemacht! Du kennst dich gut mit Dezimalzahlen aus! 🌟</p>
+            <p className="text-green-600">Well done! You know a lot about decimal numbers! 🌟</p>
           ) : (
-            <p className="text-purple-600">Weiter üben! Dezimalzahlen werden mit der Zeit einfacher! 📚</p>
+            <p className="text-purple-600">Keep practicing! Decimal numbers get easier over time! 📚</p>
           )}
         </div>
       )}

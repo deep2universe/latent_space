@@ -17,15 +17,15 @@ interface DrawingLine {
  * Available colors for drawing
  */
 const colors = [
-  { name: 'Schwarz', value: '#000000' },
-  { name: 'Rot', value: '#ef4444' },
+  { name: 'Black', value: '#000000' },
+  { name: 'Red', value: '#ef4444' },
   { name: 'Orange', value: '#f97316' },
-  { name: 'Gelb', value: '#eab308' },
-  { name: 'Grün', value: '#22c55e' },
-  { name: 'Blau', value: '#3b82f6' },
-  { name: 'Lila', value: '#a855f7' },
+  { name: 'Yellow', value: '#eab308' },
+  { name: 'Green', value: '#22c55e' },
+  { name: 'Blue', value: '#3b82f6' },
+  { name: 'Purple', value: '#a855f7' },
   { name: 'Pink', value: '#ec4899' },
-  { name: 'Braun', value: '#92400e' }
+  { name: 'Brown', value: '#92400e' }
 ];
 
 const guesses = [
@@ -38,7 +38,21 @@ const guesses = [
   { guess: "That's fantastic! ⭐", type: "praise" },
   { guess: "You're a true artist genius! 🌟", type: "praise" },
   { guess: "These colors are well chosen! 🎨", type: "praise" },
-  { guess: "The lines are so expressive! ✨", type: "praise" }
+  { guess: "The lines are so expressive! ✨", type: "praise" },
+  { guess: "Is that a monkey playing the drums? 🥁", type: "funny" },
+  { guess: "A turtle racing a rabbit? 🐢🐇", type: "funny" },
+  { guess: "A dragon flying over a castle? 🏰", type: "funny" },
+  { guess: "A cat wearing sunglasses? 😎", type: "funny" },
+  { guess: "A dog surfing on a wave? 🌊", type: "funny" },
+  { guess: "A fish playing a guitar? 🎸", type: "funny" },
+  { guess: "A bird painting a masterpiece? 🖌️", type: "funny" },
+  { guess: "A squirrel juggling acorns? 🌰", type: "funny" },
+  { guess: "A rabbit reading a book? 📚", type: "funny" },
+  { guess: "A bear dancing in the forest? 🌲", type: "funny" },
+  { guess: "A fox playing chess? ♟️", type: "funny" },
+  { guess: "A penguin skiing down a mountain? ⛷️", type: "funny" },
+  { guess: "A lion playing the piano? 🎹", type: "funny" },
+  { guess: "A zebra painting stripes? 🦓", type: "funny" }
 ];
 
 export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
@@ -136,7 +150,7 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
                 }`}
               >
                 <Paintbrush className="w-5 h-5" />
-                Stift
+                Pen
               </button>
               <button
                 onClick={() => setTool('eraser')}
@@ -147,14 +161,14 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
                 }`}
               >
                 <Eraser className="w-5 h-5" />
-                Radierer
+                Eraser
               </button>
               <button
                 onClick={clearCanvas}
                 className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 flex items-center gap-2"
               >
                 <RotateCcw className="w-5 h-5" />
-                Neu
+                New
               </button>
 
               <div className="flex items-center gap-2 ml-4 bg-gray-100 p-2 rounded-lg">
@@ -180,12 +194,12 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
               disabled={lines.length === 0}
             >
               <Download className="w-5 h-5" />
-              Rate was ich gezeichnet habe!
+              Guess what I drew!
             </button>
           </div>
 
           <div className="flex gap-2 items-center bg-gray-50 p-2 rounded-lg">
-            <span className="text-sm text-gray-600 mr-2">Farben:</span>
+            <span className="text-sm text-gray-600 mr-2">Colors:</span>
             {colors.map(color => (
               <button
                 key={color.value}
@@ -241,7 +255,7 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
                 className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
               />
               <h3 className="text-xl font-bold text-purple-600 mb-4">
-                Koala Karl sagt:
+                Koala Karl says:
               </h3>
               <p className="text-gray-700 whitespace-pre-line mb-6">
                 {currentGuess}
@@ -251,13 +265,13 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
                   onClick={() => handleResponse(true)}
                   className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
                 >
-                  Ja, genau!
+                  Yes, exactly!
                 </button>
                 <button
                   onClick={() => handleResponse(false)}
                   className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
                 >
-                  Nein, nicht ganz
+                  No, not quite
                 </button>
               </div>
             </div>
@@ -269,16 +283,16 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
             <div className="bg-white/95 p-8 rounded-xl shadow-lg max-w-md text-center">
               <ThumbsUp className="w-16 h-16 text-purple-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-purple-600 mb-4">
-                Fantastisch gemacht!
+                Fantastic job!
               </h3>
               <p className="text-gray-700 mb-6">
-                Dein Kunstwerk ist wunderschön! Du hast echtes Talent! 🎨✨
+                Your artwork is beautiful! You have real talent! 🎨✨
               </p>
               <button
                 onClick={clearCanvas}
                 className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
               >
-                Noch ein Kunstwerk malen
+                Paint another artwork
               </button>
             </div>
           </div>
@@ -287,7 +301,7 @@ export const DrawingGame: React.FC<DrawingGameProps> = ({ onProgress }) => {
 
       {!showGuess && !showSuccess && (
         <div className="mt-4 text-center text-sm text-gray-600">
-          Male ein schönes Bild und lass Koala Karl raten, was es ist! 🐨
+          Draw a beautiful picture and let Koala Karl guess what it is! 🐨
         </div>
       )}
     </div>

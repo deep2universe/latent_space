@@ -37,7 +37,7 @@ export const MazeGame: React.FC<MazeGameProps> = ({ onProgress }) => {
         </div>
         {gameState === 'ready' && (
           <div className="text-sm text-gray-600">
-            Fahre mit der Maus über START um zu beginnen
+            Hover over START with the mouse to begin
           </div>
         )}
       </div>
@@ -76,7 +76,7 @@ export const MazeGame: React.FC<MazeGameProps> = ({ onProgress }) => {
         <div className="mt-4 text-center">
           <div className="p-4 bg-red-100 text-red-700 rounded-lg mb-4">
             <p className="text-lg font-bold">Game Over!</p>
-            <p>Du hast leider zu oft die Wände berührt.</p>
+            <p>You touched the walls too many times.</p>
           </div>
           <button
             onClick={resetGame}

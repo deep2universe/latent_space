@@ -25,7 +25,7 @@ const drawSnakeSegment = (g: any) => {
   g.drawRoundedRect(0, 0, CELL_SIZE - 2, CELL_SIZE - 2, 5);
   g.endFill();
   
-  // Neon-Effekt
+  // Neon effect
   g.lineStyle(2, 0x00ff00, 0.5);
   g.drawRoundedRect(-2, -2, CELL_SIZE + 2, CELL_SIZE + 2, 6);
 };
@@ -36,7 +36,7 @@ const drawFood = (g: any) => {
   g.drawCircle(CELL_SIZE / 2, CELL_SIZE / 2, CELL_SIZE / 2 - 2);
   g.endFill();
   
-  // Pulsierender Neon-Effekt
+  // Pulsating neon effect
   const time = Date.now() / 500;
   const alpha = 0.3 + Math.sin(time) * 0.2;
   g.lineStyle(2, 0xff0000, alpha);
@@ -47,13 +47,13 @@ const drawGrid = (g: any) => {
   g.clear();
   g.lineStyle(1, 0x333333, 0.3);
   
-  // Vertikale Linien
+  // Vertical lines
   for (let x = 0; x <= GRID_WIDTH; x++) {
     g.moveTo(x * CELL_SIZE, 0);
     g.lineTo(x * CELL_SIZE, GAME_HEIGHT);
   }
   
-  // Horizontale Linien
+  // Horizontal lines
   for (let y = 0; y <= GRID_HEIGHT; y++) {
     g.moveTo(0, y * CELL_SIZE);
     g.lineTo(GAME_WIDTH, y * CELL_SIZE);
@@ -93,27 +93,27 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
         case 'right': head.x++; break;
       }
 
-      // Kollision mit Wänden
+      // Collision with walls
       if (head.x < 0 || head.x >= GRID_WIDTH || head.y < 0 || head.y >= GRID_HEIGHT) {
         return { ...prev, gameOver: true };
       }
 
-      // Kollision mit sich selbst
+      // Collision with itself
       if (prev.snake.some(segment => segment.x === head.x && segment.y === head.y)) {
         return { ...prev, gameOver: true };
       }
 
       const newSnake = [head, ...prev.snake];
       
-      // Prüfe ob Futter gefressen wurde
+      // Check if food was eaten
       if (head.x === prev.food.x && head.y === prev.food.y) {
         const newScore = prev.score + 1;
         const newLevel = Math.floor(newScore / 5) + 1;
         
-        // Aktualisiere Fortschritt
+        // Update progress
         onProgress(Math.min((newScore / 20) * 100, 100));
         
-        // Erhöhe Geschwindigkeit
+        // Increase speed
         if (newLevel > prev.level) {
           setSpeed(current => Math.max(current - SPEED_INCREASE, 50));
         }
@@ -127,7 +127,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
         };
       }
 
-      // Entferne das letzte Segment, wenn kein Futter gefressen wurde
+      // Remove the last segment if no food was eaten
       newSnake.pop();
 
       return { ...prev, snake: newSnake };
@@ -150,7 +150,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
 
       if (!newDirection) return;
 
-      // Verhindere Richtungswechsel um 180 Grad
+      // Prevent 180-degree direction change
       const isOppositeDirection = (
         (newDirection === 'up' && gameState.direction === 'down') ||
         (newDirection === 'down' && gameState.direction === 'up') ||
@@ -161,7 +161,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
       if (!isOppositeDirection) {
         setGameState(prev => ({ ...prev, direction: newDirection }));
         
-        // Starte das Spiel beim ersten Tastendruck
+        // Start the game on the first key press
         if (!gameStarted) {
           setGameStarted(true);
         }
@@ -238,7 +238,7 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
 
           {!gameStarted && !gameState.gameOver && (
             <Text
-              text="Drücke eine Pfeiltaste zum Starten"
+              text="Press an arrow key to start"
               anchor={0.5}
               x={GAME_WIDTH / 2}
               y={GAME_HEIGHT / 2}
@@ -265,13 +265,13 @@ export const SnakeGame: React.FC<SnakeGameProps> = ({ onProgress }) => {
             onClick={restartGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
-            Nochmal spielen
+            Play again
           </button>
         </div>
       )}
 
       <div className="mt-4 text-center text-sm text-gray-600">
-        Benutze die Pfeiltasten ⬆️ ⬇️ ⬅️ ➡️ um die Schlange zu steuern
+        Use the arrow keys ⬆️ ⬇️ ⬅️ ➡️ to control the snake
       </div>
     </div>
   );

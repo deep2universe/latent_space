@@ -13,8 +13,8 @@ const CAR_WIDTH = 60;
 const CAR_HEIGHT = 30;
 const LANE_HEIGHT = 40;
 const INITIAL_LIVES = 3;
-const BASE_SPEED = 0.5; // Reduzierte Grundgeschwindigkeit
-const SPEED_INCREMENT = 0.15; // Geschwindigkeitszunahme pro Level
+const BASE_SPEED = 0.5; // Reduced base speed
+const SPEED_INCREMENT = 0.15; // Speed increase per level
 
 export const FroggerGame: React.FC<FroggerGameProps> = ({ onProgress }) => {
   const [gameState, setGameState] = useState<FroggerGameState>({
@@ -38,9 +38,9 @@ export const FroggerGame: React.FC<FroggerGameProps> = ({ onProgress }) => {
   }, []);
 
   const getSpeedForLane = useCallback((lane: number, score: number) => {
-    // Basisgeschwindigkeit + (Level-Bonus * Spurbonus)
+    // Base speed + (level bonus * lane bonus)
     const levelBonus = score * SPEED_INCREMENT;
-    const laneBonus = (lane + 1) * 0.1; // Äußere Spuren sind etwas schneller
+    const laneBonus = (lane + 1) * 0.1; // Outer lanes are slightly faster
     return BASE_SPEED + levelBonus + laneBonus;
   }, []);
 
@@ -153,7 +153,7 @@ export const FroggerGame: React.FC<FroggerGameProps> = ({ onProgress }) => {
           const newScore = prev.score + 1;
           onProgress(Math.min((newScore / 5) * 100, 100));
           resetFrog();
-          // Initialisiere neue Autos mit erhöhter Geschwindigkeit
+          // Initialize new cars with increased speed
           const newCarsWithIncreasedSpeed = initializeCars(newScore);
           return { 
             ...prev, 
@@ -241,13 +241,13 @@ export const FroggerGame: React.FC<FroggerGameProps> = ({ onProgress }) => {
             onClick={restartGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
-            Nochmal spielen
+            Play again
           </button>
         </div>
       )}
 
       <div className="mt-4 text-center text-sm text-gray-600">
-        Benutze die Pfeiltasten ⬆️ ⬇️ ⬅️ ➡️ um den Frosch zu steuern
+        Use the arrow keys ⬆️ ⬇️ ⬅️ ➡️ to control the frog
       </div>
     </div>
   );

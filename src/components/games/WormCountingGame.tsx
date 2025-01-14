@@ -11,21 +11,21 @@ interface WormCountingGameProps {
  * Predefined colors for the worms
  */
 const WORM_COLORS = [
-  0xFF0000, // Rot
-  0x00FF00, // Grün
-  0x0000FF, // Blau
+  0xFF0000, // Red
+  0x00FF00, // Green
+  0x0000FF, // Blue
   0xFF00FF, // Magenta
   0x00FFFF, // Cyan
-  0xFFFF00, // Gelb
+  0xFFFF00, // Yellow
   0xFF8000, // Orange
-  0x8000FF, // Violett
+  0x8000FF, // Violet
   0xFF0080, // Pink
-  0x00FF80, // Mintgrün
-  0x0080FF, // Hellblau
-  0x8000FF, // Lila
-  0xFF8080, // Hellrot
-  0x80FF80, // Hellgrün
-  0x8080FF  // Hellblau
+  0x00FF80, // Mint green
+  0x0080FF, // Light blue
+  0x8000FF, // Purple
+  0xFF8080, // Light red
+  0x80FF80, // Light green
+  0x8080FF  // Light blue
 ];
 
 export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }) => {
@@ -35,7 +35,7 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
   const [score, setScore] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [worms, setWorms] = useState<any[]>([]);
-  const [stageSize, setStageSize] = useState({ width: 600, height: 400 }); // Kleineres Spielfeld
+  const [stageSize, setStageSize] = useState({ width: 600, height: 400 }); // Smaller playing field
   const tickRef = useRef(0);
   const animationFrameRef = useRef<number>();
 
@@ -55,7 +55,7 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
     setUserGuess('');
     setShowResult(false);
 
-    // Initialisiere Würmer mit zufälligen Positionen, Eigenschaften und Farben
+    // Initialize worms with random positions, properties, and colors
     const newWorms = Array.from({ length: randomTotal }, (_, index) => ({
       x: Math.random() * stageSize.width,
       y: Math.random() * stageSize.height,
@@ -64,7 +64,7 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
       turningSpeed: Math.random() - 0.8,
       speed: (2 + Math.random() * 2) * 0.2,
       offset: Math.random() * 100,
-      tint: WORM_COLORS[index % WORM_COLORS.length] // Zyklische Farbzuweisung
+      tint: WORM_COLORS[index % WORM_COLORS.length] // Cyclical color assignment
     }));
 
     setWorms(newWorms);
@@ -131,7 +131,7 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4"> {/* Kleinerer Container */}
+    <div className="max-w-2xl mx-auto p-4"> {/* Smaller container */}
       <div className="mb-4 flex justify-between items-center">
         <div className="text-purple-600 font-bold">Score: {score}</div>
         <div className="text-gray-600">Attempts: {attempts}</div>
@@ -172,7 +172,7 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
               className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               <Check className="w-5 h-5" />
-              Raten
+              Guess
             </button>
           </div>
         ) : (
@@ -184,11 +184,11 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
             }`}>
               <p className="text-lg font-bold mb-2">
                 {parseInt(userGuess) === totalWorms 
-                  ? 'Perfekt! 🎉' 
-                  : 'Fast richtig! 👀'}
+                  ? 'Perfect! 🎉' 
+                  : 'Almost right! 👀'}
               </p>
               <p>
-                Es waren {totalWorms} Würmer. Du hast {userGuess} geraten.
+                There were {totalWorms} worms. You guessed {userGuess}.
               </p>
             </div>
             <button
@@ -196,14 +196,14 @@ export const WormCountingGame: React.FC<WormCountingGameProps> = ({ onProgress }
               className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 mx-auto"
             >
               <RotateCcw className="w-5 h-5" />
-              Nochmal spielen
+              Play again
             </button>
           </div>
         )}
       </div>
 
       <div className="mt-4 text-center text-lg font-semibold text-purple-600 bg-purple-50 p-4 rounded-lg">
-        Wie viele Würmer siehst du? 🪱
+        How many worms do you see? 🪱
       </div>
     </div>
   );

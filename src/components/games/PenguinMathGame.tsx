@@ -26,7 +26,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
       if (parseInt(userAnswer) === problems[currentProblemIndex].answer) {
         setScore(score + 1);
       }
-      // Aktualisiere den Fortschritt
+      // Update progress
       const progress = ((score + (parseInt(userAnswer) === problems[currentProblemIndex].answer ? 1 : 0)) / problems.length) * 100;
       onProgress(progress);
     }
@@ -49,7 +49,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      {/* Fortschrittsbalken */}
+      {/* Progress bar */}
       <div className="w-full h-2 bg-gray-200 rounded-full mb-6">
         <div 
           className="h-full bg-purple-600 rounded-full transition-all duration-300"
@@ -57,7 +57,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
         />
       </div>
 
-      {/* Punktestand */}
+      {/* Score */}
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
@@ -65,14 +65,14 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
         </div>
       </div>
 
-      {/* Aufgabenkarte */}
+      {/* Task card */}
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <div className="flex justify-between items-start mb-4">
           <Calculator className="w-6 h-6 text-purple-600" />
           <button
             onClick={() => setShowHint(true)}
             className="text-purple-600 hover:text-purple-700 transition-colors"
-            title="Hinweis anzeigen"
+            title="Show hint"
           >
             <HelpCircle className="w-6 h-6" />
           </button>
@@ -96,7 +96,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 className="flex-1 p-3 border-2 border-purple-200 rounded-lg focus:border-purple-400 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
-                placeholder="Deine Antwort..."
+                placeholder="Your answer..."
                 min="0"
                 max="100"
                 required
@@ -105,7 +105,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
                 type="submit"
                 className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
               >
-                Prüfen
+                Check
               </button>
             </div>
           </form>
@@ -121,7 +121,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
                   <ThumbsDown className="w-5 h-5" />
                 )}
                 <span className="font-bold">
-                  {isCorrect ? 'Super gerechnet!' : `Die richtige Antwort ist ${currentProblem.answer}`}
+                  {isCorrect ? 'Well done!' : `The correct answer is ${currentProblem.answer}`}
                 </span>
               </div>
               <p>{currentProblem.explanation}</p>
@@ -132,7 +132,7 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
                 onClick={nextProblem}
                 className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2"
               >
-                Nächste Aufgabe
+                Next task
                 <ArrowRight className="w-5 h-5" />
               </button>
             )}
@@ -142,16 +142,16 @@ export const PenguinMathGame: React.FC<PenguinMathGameProps> = ({ onProgress }) 
 
       {isLastProblem && showAnswer && (
         <div className="text-center bg-purple-100 rounded-xl p-6">
-          <h3 className="text-2xl font-bold text-purple-600 mb-2">Spiel beendet!</h3>
+          <h3 className="text-2xl font-bold text-purple-600 mb-2">Game Over!</h3>
           <p className="text-lg mb-4">
-            Du hast {score} von {problems.length} Aufgaben richtig gelöst!
+            You solved {score} out of {problems.length} tasks correctly!
           </p>
           {score === problems.length ? (
-            <p className="text-green-600">Fantastisch! Du bist ein Mathe-Genie! 🎉</p>
+            <p className="text-green-600">Fantastic! You're a math genius! 🎉</p>
           ) : score >= problems.length * 0.7 ? (
-            <p className="text-green-600">Super gemacht! Du bist richtig gut in Mathe! 🌟</p>
+            <p className="text-green-600">Well done! You're really good at math! 🌟</p>
           ) : (
-            <p className="text-purple-600">Weiter üben! Mathe macht mit der Zeit immer mehr Spaß! 📚</p>
+            <p className="text-purple-600">Keep practicing! Math gets more fun over time! 📚</p>
           )}
         </div>
       )}

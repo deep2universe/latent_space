@@ -62,7 +62,7 @@ export const LetterCatchGame: React.FC<LetterCatchGameProps> = ({ onProgress }) 
   const numbers = '0123456789';
 
   const spawnItem = () => {
-    const isNumber = Math.random() < 0.3; // 30% Chance für eine Zahl
+    const isNumber = Math.random() < 0.3; // 30% chance for a number
     const value = isNumber 
       ? numbers[Math.floor(Math.random() * numbers.length)]
       : letters[Math.floor(Math.random() * letters.length)];
@@ -195,20 +195,20 @@ export const LetterCatchGame: React.FC<LetterCatchGameProps> = ({ onProgress }) 
       {gameOver && (
         <div className="mt-4 text-center">
           <div className="p-4 bg-purple-100 rounded-lg mb-4">
-            <h3 className="text-xl font-bold text-purple-600 mb-2">Spiel vorbei!</h3>
-            <p>Deine Punktzahl: {score}</p>
+            <h3 className="text-xl font-bold text-purple-600 mb-2">Game Over!</h3>
+            <p>Your score: {score}</p>
           </div>
           <button
             onClick={resetGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
           >
-            Nochmal spielen
+            Play again
           </button>
         </div>
       )}
 
       <div className="mt-4 text-center text-sm text-gray-600">
-        Fange die weißen Buchstaben, aber vermeide die roten Zahlen!
+        Catch the white letters, but avoid the red numbers!
       </div>
     </div>
   );

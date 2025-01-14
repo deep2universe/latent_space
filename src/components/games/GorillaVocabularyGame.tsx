@@ -21,7 +21,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
 
   useEffect(() => {
     if (words.length > 0) {
-      // Mische die Antworten für die aktuelle Frage nur einmal
+      // Shuffle the answers for the current question only once
       const currentWord = words[currentWordIndex];
       const answers = [
         currentWord.correctAnswer,
@@ -39,7 +39,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
       setScore(score + 1);
     }
 
-    // Aktualisiere den Fortschritt
+    // Update progress
     const progress = ((score + (answer === words[currentWordIndex].correctAnswer ? 1 : 0)) / words.length) * 100;
     onProgress(progress);
   };
@@ -60,7 +60,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      {/* Fortschrittsbalken */}
+      {/* Progress bar */}
       <div className="w-full h-2 bg-gray-200 rounded-full mb-6">
         <div 
           className="h-full bg-purple-600 rounded-full transition-all duration-300"
@@ -68,7 +68,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
         />
       </div>
 
-      {/* Punktestand */}
+      {/* Score */}
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
@@ -76,7 +76,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
         </div>
       </div>
 
-      {/* Wortkarte */}
+      {/* Word card */}
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h3 className="text-2xl font-bold text-center text-purple-600 mb-4">
           {currentWord.word}
@@ -84,7 +84,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
 
         {!showAnswer ? (
           <div className="space-y-4">
-            <p className="text-center text-gray-600 mb-6">Was bedeutet das?</p>
+            <p className="text-center text-gray-600 mb-6">What does it mean?</p>
             <div className="space-y-3">
               {shuffledAnswers.map((answer) => (
                 <button
@@ -109,7 +109,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
                   <ThumbsDown className="w-5 h-5" />
                 )}
                 <span className="font-bold">
-                  {isCorrect ? 'Super gemacht!' : 'Nicht ganz richtig!'}
+                  {isCorrect ? 'Well done!' : 'Not quite right!'}
                 </span>
               </div>
               <p>{currentWord.funFact}</p>
@@ -120,7 +120,7 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
                 onClick={nextWord}
                 className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2"
               >
-                Nächstes Wort
+                Next word
                 <ArrowRight className="w-5 h-5" />
               </button>
             )}
@@ -130,16 +130,16 @@ export const GorillaVocabularyGame: React.FC<GorillaVocabularyGameProps> = ({ on
 
       {isLastWord && showAnswer && (
         <div className="text-center bg-purple-100 rounded-xl p-6">
-          <h3 className="text-2xl font-bold text-purple-600 mb-2">Spiel beendet!</h3>
+          <h3 className="text-2xl font-bold text-purple-600 mb-2">Game Over!</h3>
           <p className="text-lg mb-4">
-            Du hast {score} von {words.length} Wörtern richtig erklärt!
+            You explained {score} out of {words.length} words correctly!
           </p>
           {score === words.length ? (
-            <p className="text-green-600">Fantastisch! Du bist ein Fremdwörter-Profi! 🎉</p>
+            <p className="text-green-600">Fantastic! You're a vocabulary expert! 🎉</p>
           ) : score >= words.length * 0.7 ? (
-            <p className="text-green-600">Super gemacht! Du kennst dich gut aus! 🌟</p>
+            <p className="text-green-600">Well done! You know a lot! 🌟</p>
           ) : (
-            <p className="text-purple-600">Weiter üben! Du lernst jeden Tag dazu! 📚</p>
+            <p className="text-purple-600">Keep practicing! You learn more every day! 📚</p>
           )}
         </div>
       )}

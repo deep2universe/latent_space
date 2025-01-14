@@ -47,7 +47,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
    */
   const initializeEngine = () => {
     const engine = Matter.Engine.create();
-    // Wichtig: Gravitation initial auf 0 setzen
+    // Important: Set gravity to 0 initially
     engine.gravity.y = 0;
     engineRef.current = engine;
 
@@ -196,7 +196,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
     setIsSimulating(true);
     setAttempts(prev => prev + 1);
 
-    // Aktiviere Gravitation beim Start
+    // Activate gravity on start
     engineRef.current.gravity.y = 0.5;
     Matter.Body.setVelocity(ballRef.current, { x: 0, y: 0 });
 
@@ -231,28 +231,28 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
   const handleGameReset = () => {
     if (!engineRef.current || !ballRef.current) return;
 
-    // Stoppe Animation
+    // Stop animation
     if (requestRef.current) {
       cancelAnimationFrame(requestRef.current);
     }
 
-    // Deaktiviere Gravitation
+    // Deactivate gravity
     engineRef.current.gravity.y = 0;
 
-    // Entferne alle Linien
+    // Remove all lines
     lineBodiesRef.current.forEach(body => {
       Matter.World.remove(engineRef.current!.world, body);
     });
     lineBodiesRef.current = [];
 
-    // Neue Position für den Ball
+    // New position for the ball
     const newPos = getRandomBallPosition();
     Matter.Body.setPosition(ballRef.current, newPos);
     Matter.Body.setVelocity(ballRef.current, { x: 0, y: 0 });
     Matter.Body.setAngularVelocity(ballRef.current, 0);
     setBallPosition(newPos);
 
-    // Reset Spielstatus
+    // Reset game state
     setLines([]);
     setCurrentPoints([]);
     setIsSimulating(false);
@@ -269,7 +269,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
     ctx.fillStyle = '#f0f9ff';
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    // Eimer zeichnen
+    // Draw bucket
     if (bucketRef.current) {
       ctx.fillStyle = '#4a5568';
       const bucket = bucketRef.current;
@@ -281,7 +281,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
       );
     }
 
-    // Ball zeichnen
+    // Draw ball
     ctx.fillStyle = '#ef4444';
     ctx.beginPath();
     ctx.arc(
@@ -293,7 +293,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
     );
     ctx.fill();
 
-    // Linien zeichnen
+    // Draw lines
     ctx.strokeStyle = '#000000';
     ctx.lineWidth = 4;
     ctx.lineCap = 'round';
@@ -336,17 +336,17 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-10 flex items-center justify-center">
           <div className="bg-white p-8 rounded-xl max-w-md text-center">
             <h3 className="text-2xl font-bold text-purple-600 mb-4">
-              Willkommen beim Physik-Spiel!
+              Welcome to the Physics Game!
             </h3>
             <p className="text-gray-600 mb-6">
-              Zeichne Linien, um den Ball in den Eimer zu leiten. 
-              Nutze die Schwerkraft zu deinem Vorteil!
+              Draw lines to guide the ball into the bucket. 
+              Use gravity to your advantage!
             </p>
             <button
               onClick={() => setShowIntro(false)}
               className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
             >
-              Spiel starten
+              Start Game
             </button>
           </div>
         </div>
@@ -387,7 +387,7 @@ export const PhysicsDrawingGame: React.FC<PhysicsDrawingGameProps> = ({ onProgre
       </div>
 
       <div className="mt-4 text-center text-lg font-semibold text-purple-600 bg-purple-50 p-4 rounded-lg">
-        Zeichne geschickt deine Linien und führe den Ball zum Eimer! 🎯
+        Skillfully draw your lines and guide the ball to the bucket! 🎯
       </div>
     </div>
   );

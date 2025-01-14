@@ -38,10 +38,10 @@ export const TigerHangmanGame: React.FC<TigerHangmanGameProps> = ({ onProgress }
         setRemainingTries(newTries);
         if (newTries === 0) {
           setGameStatus('lost');
-          onProgress(30); // Teilweise Belohnung fürs Mitspielen
+          onProgress(30); // Partial reward for participation
         }
       } else {
-        // Prüfen ob das Wort komplett erraten wurde
+        // Check if the word has been completely guessed
         const isWordComplete = word.split('').every(char => newGuessedLetters.includes(char));
         if (isWordComplete) {
           setGameStatus('won');
@@ -70,14 +70,14 @@ export const TigerHangmanGame: React.FC<TigerHangmanGameProps> = ({ onProgress }
 
         {gameStatus === 'won' && (
           <div className="text-2xl text-green-600 font-bold mb-4">
-            🎉 Super! Du hast das Wort erraten! 🎉
+            🎉 Great! You guessed the word! 🎉
           </div>
         )}
 
         {gameStatus === 'lost' && (
           <div className="text-xl text-red-600 mb-4">
-            <p>Nicht schlimm! Das Wort war: {word}</p>
-            <p className="mt-2">Versuche es noch einmal! 🐯</p>
+            <p>No worries! The word was: {word}</p>
+            <p className="mt-2">Try again! 🐯</p>
           </div>
         )}
       </div>
@@ -108,7 +108,7 @@ export const TigerHangmanGame: React.FC<TigerHangmanGameProps> = ({ onProgress }
             onClick={initializeGame}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
-            Neues Spiel
+            New Game
           </button>
         </div>
       )}

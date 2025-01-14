@@ -100,7 +100,7 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
           <div className="flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500" />
             <div className="flex-1">
-              <div className="text-xs text-gray-600 mb-1">Glück</div>
+              <div className="text-xs text-gray-600 mb-1">Happiness</div>
               <div className="h-2 bg-gray-200 rounded-full">
                 <div 
                   className="h-full bg-pink-500 rounded-full transition-all"
@@ -126,7 +126,7 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
           <div className="flex items-center gap-2">
             <Battery className="w-4 h-4 text-green-500" />
             <div className="flex-1">
-              <div className="text-xs text-gray-600 mb-1">Energie</div>
+              <div className="text-xs text-gray-600 mb-1">Energy</div>
               <div className="h-2 bg-gray-200 rounded-full">
                 <div 
                   className="h-full bg-green-500 rounded-full transition-all"
@@ -149,7 +149,7 @@ export const AnimalPanel: React.FC<AnimalPanelProps> = ({ animal, onPlayGame }) 
           className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-purple-700 transition-colors"
         >
           <Play className="w-4 h-4" />
-          <span>Spiel starten</span>
+          <span>Start game</span>
         </button>
       </div>
     </div>

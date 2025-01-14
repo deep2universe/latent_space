@@ -21,7 +21,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
 
   useEffect(() => {
     if (questions.length > 0) {
-      // Mische die Antworten für die aktuelle Frage
+      // Shuffle the answers for the current question
       const currentQuestion = questions[currentQuestionIndex];
       const answers = [
         currentQuestion.correctAnswer,
@@ -39,7 +39,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
       setScore(score + 1);
     }
 
-    // Aktualisiere den Fortschritt
+    // Update progress
     const progress = ((score + (answer === questions[currentQuestionIndex].correctAnswer ? 1 : 0)) / questions.length) * 100;
     onProgress(progress);
   };
@@ -60,7 +60,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      {/* Fortschrittsbalken */}
+      {/* Progress bar */}
       <div className="w-full h-2 bg-gray-200 rounded-full mb-6">
         <div 
           className="h-full bg-purple-600 rounded-full transition-all duration-300"
@@ -68,7 +68,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
         />
       </div>
 
-      {/* Punktestand */}
+      {/* Score */}
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
@@ -76,7 +76,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
         </div>
       </div>
 
-      {/* Fragekarte */}
+      {/* Question card */}
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <h3 className="text-xl font-bold text-center text-purple-600 mb-6">
           {currentQuestion.question}
@@ -106,7 +106,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
                   <ThumbsDown className="w-5 h-5" />
                 )}
                 <span className="font-bold">
-                  {isCorrect ? 'Hoppi hüpft vor Freude!' : `Die richtige Antwort ist: ${currentQuestion.correctAnswer}`}
+                  {isCorrect ? 'Hoppi jumps for joy!' : `The correct answer is: ${currentQuestion.correctAnswer}`}
                 </span>
               </div>
               <p className="mt-2">{currentQuestion.funFact}</p>
@@ -117,7 +117,7 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
                 onClick={nextQuestion}
                 className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2"
               >
-                Nächste Frage
+                Next question
                 <ArrowRight className="w-5 h-5" />
               </button>
             )}
@@ -127,16 +127,16 @@ export const KangarooQuizGame: React.FC<KangarooQuizGameProps> = ({ onProgress }
 
       {isLastQuestion && showAnswer && (
         <div className="text-center bg-purple-100 rounded-xl p-6">
-          <h3 className="text-2xl font-bold text-purple-600 mb-2">Spiel beendet!</h3>
+          <h3 className="text-2xl font-bold text-purple-600 mb-2">Game Over!</h3>
           <p className="text-lg mb-4">
-            Du hast {score} von {questions.length} Fragen richtig beantwortet!
+            You answered {score} out of {questions.length} questions correctly!
           </p>
           {score === questions.length ? (
-            <p className="text-green-600">Fantastisch! Du bist ein echter Känguru-Experte! 🦘✨</p>
+            <p className="text-green-600">Fantastic! You're a real kangaroo expert! 🦘✨</p>
           ) : score >= questions.length * 0.7 ? (
-            <p className="text-green-600">Super gemacht! Du weißt schon sehr viel über Kängurus! 🦘</p>
+            <p className="text-green-600">Well done! You know a lot about kangaroos! 🦘</p>
           ) : (
-            <p className="text-purple-600">Weiter so! Jetzt kennst du schon viele spannende Känguru-Fakten! 📚</p>
+            <p className="text-purple-600">Keep it up! Now you know many exciting kangaroo facts! 📚</p>
           )}
         </div>
       )}
