@@ -67,7 +67,7 @@ function App() {
       <header className="bg-white shadow-md p-4 fixed top-0 left-0 right-0 z-10">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-purple-600">
-            Mein magischer Zoo
+            My Magical Zoo
           </h1>
         </div>
       </header>
