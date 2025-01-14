@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ShoppingBag, Clock, Layout, Globe2 } from 'lucide-react';
+import { Star, ShoppingBag, Clock, Layout, Globe2, LogOut } from 'lucide-react';
 import { useGameStore } from '../store/gameStore';
 import { useTranslation } from '../hooks/useTranslation';
 import { initialAnimals } from '../store/initialAnimals';
@@ -15,7 +15,7 @@ interface HUDProps {
     onShopClick: () => void;
     viewMode: 'cards' | 'world';
     onViewModeChange: () => void;
-}
+    onSignOut: () => void;
 
 export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onViewModeChange }) => {
     const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
@@ -139,6 +139,12 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
                 className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors"
             >
                 <ShoppingBag className="w-6 h-6 text-purple-600" />
+            </button>
+            <button
+                onClick={onSignOut}
+                className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors"
+            >
+                <LogOut className="w-6 h-6 text-purple-600" />
             </button>
         </div>
     );
