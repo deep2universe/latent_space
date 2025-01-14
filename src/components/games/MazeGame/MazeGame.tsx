@@ -37,7 +37,7 @@ export const MazeGame: React.FC<MazeGameProps> = ({ onProgress }) => {
         </div>
         {gameState === 'ready' && (
           <div className="text-sm text-gray-600">
-            Hover over START with the mouse to begin
+              Move the mouse from the left over the green square to start the game.
           </div>
         )}
       </div>

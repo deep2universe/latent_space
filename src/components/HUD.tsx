@@ -83,18 +83,6 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
                 <span className="font-bold text-gray-700">{stars}</span>
             </div>
             <button
-                onClick={uploadInitialAnimals}
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition-colors mr-2"
-            >
-                Initialize Animals
-            </button>
-            <button
-                onClick={initializeMemoryCardsDatabase}
-                className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 transition-colors"
-            >
-                Initialize Memory Cards
-            </button>
-            <button
                 onClick={onViewModeChange}
                 className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors flex items-center gap-2"
                 title={t(`viewMode.${viewMode}`)}
@@ -105,12 +93,6 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
         </span>
             </button>
             <div className="relative">
-                <button
-                    onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
-                    className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors"
-                >
-                    <Globe2 className="w-6 h-6 text-purple-600" />
-                </button>
                 {languageMenuOpen && (
                     <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
                         {languages.map(({ code, name }) => (
@@ -130,6 +112,7 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
             <button
                 onClick={onShopClick}
                 className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors"
+                title="Shop"
             >
                 <ShoppingBag className="w-6 h-6 text-purple-600" />
             </button>
