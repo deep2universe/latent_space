@@ -141,12 +141,7 @@ export const HUD: React.FC<HUDProps> = ({ timeLeft, onShopClick, viewMode, onVie
             >
                 <ShoppingBag className="w-6 h-6 text-purple-600" />
             </button>
-            <button
-                onClick={onSignOut}
-                className="bg-white p-2 rounded-full shadow hover:bg-gray-50 transition-colors"
-            >
-                <LogOut className="w-6 h-6 text-purple-600" />
-            </button>
+
         </div>
     );
 };
